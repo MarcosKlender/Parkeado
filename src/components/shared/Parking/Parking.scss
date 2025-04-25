@@ -12,7 +12,14 @@ $pill-text: #ffffff;
     padding: 0.75rem 1.5rem;
     margin-block: 0.5rem;
     background-color: $article-background;
+    border: 1px solid black;
     border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+        border-color: #05976a;
+    }
 
     & h3 {
         margin: 0;

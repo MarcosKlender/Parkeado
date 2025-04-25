@@ -11,21 +11,21 @@ function App() {
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
 
-      <h1>Parqueadero</h1>
+      <h1>Parqueaderos</h1>
       <Parking
         name='Central Plaza Parking'
         address='742 Evergreen Terrace, Springfield'
-        available_slots={20}
+        availableSlots={20}
       />
       <Parking
         name='Central Plaza Parking'
         address='742 Evergreen Terrace, Springfield'
-        available_slots={30}
+        availableSlots={30}
       />
       <Parking
         name='Central Plaza Parking'
         address='742 Evergreen Terrace, Springfield'
-        available_slots={40}
+        availableSlots={40}
       />
     </>
   )

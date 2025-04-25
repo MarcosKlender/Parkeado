@@ -1,20 +1,22 @@
 import './Parking.scss'
 
 type ParkingProps = {
-    name: string,
-    address: string,
-    available_slots: number
+    name: string
+    address: string
+    availableSlots: number
+    onClick?: () => void
+
 }
 
-export function Parking({ name, address, available_slots }: ParkingProps) {
+export function Parking({ name, address, availableSlots, onClick }: ParkingProps) {
     return (
-        <article className='parking'>
+        <article className='parking' onClick={onClick}>
             <div>
                 <h3>{name}</h3>
                 <p>{address}</p>
             </div>
 
-            <span>{available_slots} libres</span>
+            <span>{availableSlots} libres</span>
         </article>
     )
 }
