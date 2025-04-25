@@ -1,8 +1,8 @@
-$text-light: #ffffff;
-$success-button: #05976a;
-$danger-button: #dc2625;
-$primary-button: #2563ea;
-$secondary-button: #6c757d;
+$text-color: #ffffff;
+$button-success: #05976a;
+$button-danger: #dc2625;
+$button-primary: #2563ea;
+$button-secondary: #6c757d;
 
 .button {
     padding: 0.75rem 1.5rem;
@@ -10,38 +10,38 @@ $secondary-button: #6c757d;
     border: none;
     border-radius: 10px;
     font-size: 1rem;
-    color: $text-light;
+    color: $text-color;
     cursor: pointer;
 
     &.success {
-        background-color: $success-button;
+        background-color: $button-success;
 
         &:hover {
-            background-color: darken($success-button, 10%);
+            background-color: darken($button-success, 10%);
         }
     }
 
     &.danger {
-        background-color: $danger-button;
+        background-color: $button-danger;
 
         &:hover {
-            background-color: darken($danger-button, 10%);
+            background-color: darken($button-danger, 10%);
         }
     }
 
     &.primary {
-        background-color: $primary-button;
+        background-color: $button-primary;
 
         &:hover {
-            background-color: darken($primary-button, 10%);
+            background-color: darken($button-primary, 10%);
         }
     }
 
     &.secondary {
-        background-color: $secondary-button;
+        background-color: $button-secondary;
 
         &:hover {
-            background-color: darken($secondary-button, 10%);
+            background-color: darken($button-secondary, 10%);
         }
     }
 }
