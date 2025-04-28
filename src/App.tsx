@@ -2,6 +2,7 @@ import { Button } from './components/shared/Button/Button';
 import { Parking } from './components/shared/Parking/Parking';
 import { Slot } from './components/shared/Slot/Slot';
 import { Avatar } from './components/shared/Avatar/Avatar';
+import { Input } from './components/shared/Input/Input';
 import './App.css'
 
 function App() {
@@ -30,6 +31,11 @@ function App() {
       <Avatar name='Cristian Guerrero' />
       <Avatar name='Marcos Carrasco' />
       <Avatar name='Moisés Arias' />
+
+      <h2>Inputs</h2>
+      <Input variant='text' label='Nombre y Apellido' placeholder='John Doe' />
+      <Input variant='email' label='Correo' placeholder='usuario@example.com' />
+      <Input variant='password' label='Contraseña' placeholder='**********' />
     </>
   )
 }

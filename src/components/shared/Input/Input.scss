@@ -1,0 +1,30 @@
+$text-color: #a1a1a1;
+$bg-color: #ffffff;
+$focus-color: #007bff;
+
+.custom-label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+    margin-block: 15px;
+}
+
+.custom-input {
+    font-size: inherit;
+    padding: 10px;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    background-color: $bg-color;
+    color: $text-color;
+
+    &:focus {
+        outline: none;
+        border-color: $focus-color;
+        box-shadow: 0 0 2px $focus-color;
+    }
+
+    &:active {
+        transform: scale(0.99);
+    }
+}
