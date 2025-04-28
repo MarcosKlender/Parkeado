@@ -1,6 +1,7 @@
 import { Button } from './components/shared/Button/Button';
 import { Parking } from './components/shared/Parking/Parking';
 import { Slot } from './components/shared/Slot/Slot';
+import { Avatar } from './components/shared/Avatar/Avatar';
 import './App.css'
 
 function App() {
@@ -24,6 +25,11 @@ function App() {
       <Slot number={2} isAvailable={false} />
       <Slot number={3} isAvailable={true} />
       <Slot number={4} isAvailable={false} />
+
+      <h2>Avatar</h2>
+      <Avatar name='Cristian Guerrero' />
+      <Avatar name='Marcos Carrasco' />
+      <Avatar name='Moisés Arias' />
     </>
   )
 }
