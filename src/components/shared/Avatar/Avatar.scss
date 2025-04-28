@@ -1,0 +1,16 @@
+$bg-color: #000000;
+$text-color: #ffffff;
+
+.avatar {
+    margin-inline: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: $bg-color;
+    color: $text-color;
+    font-weight: bold;
+    font-size: 1.25rem;
+}

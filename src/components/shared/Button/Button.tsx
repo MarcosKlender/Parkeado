@@ -9,7 +9,7 @@ type ButtonProps = {
 
 export function Button({ children, variant = 'primary', onClick }: ButtonProps) {
     return (
-        <button className={`button ${variant}`} onClick={onClick}>
+        <button className={`custom-button ${variant}`} onClick={onClick}>
             {children}
         </button>
     )

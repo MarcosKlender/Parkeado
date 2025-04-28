@@ -1,10 +1,12 @@
+@use 'sass:color';
+
 $text-color: #ffffff;
 $button-success: #05976a;
 $button-danger: #dc2625;
 $button-primary: #2563ea;
 $button-secondary: #6c757d;
 
-.button {
+.custom-button {
     padding: 0.75rem 1.5rem;
     margin-inline: 0.25rem;
     border: none;
@@ -17,7 +19,7 @@ $button-secondary: #6c757d;
         background-color: $button-success;
 
         &:hover {
-            background-color: darken($button-success, 10%);
+            background-color: color.adjust($button-success, $lightness: -10%);
         }
     }
 
@@ -25,7 +27,7 @@ $button-secondary: #6c757d;
         background-color: $button-danger;
 
         &:hover {
-            background-color: darken($button-danger, 10%);
+            background-color: color.adjust($button-danger, $lightness: -10%);
         }
     }
 
@@ -33,7 +35,7 @@ $button-secondary: #6c757d;
         background-color: $button-primary;
 
         &:hover {
-            background-color: darken($button-primary, 10%);
+            background-color: color.adjust($button-primary, $lightness: -10%);
         }
     }
 
@@ -41,7 +43,7 @@ $button-secondary: #6c757d;
         background-color: $button-secondary;
 
         &:hover {
-            background-color: darken($button-secondary, 10%);
+            background-color: color.adjust($button-secondary, $lightness: -10%);
         }
     }
 }
