@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { Login } from './pages/Auth/Login/Login'
-import { Register } from './pages/Auth/Register/Register'
-import { Home } from './pages/Dashboard/Home/Home'
-import { Profile } from './pages/Dashboard/Profile/Profile'
-import { NotFound } from './pages/NotFound/NotFound'
+import { Login } from '@/pages/Auth/Login/Login'
+import { Register } from '@/pages/Auth/Register/Register'
+import { Home } from '@/pages/Dashboard/Home/Home'
+import { Profile } from '@/pages/Dashboard/Profile/Profile'
+import { NotFound } from '@/pages/NotFound/NotFound'
 
-import './App.css'
+import '@/App.css'
 
 function App() {
   return (
