@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import { Login } from './pages/Login/Login'
+import { Login } from './pages/Auth/Login/Login'
+import { Register } from './pages/Auth/Register/Register'
+import { Home } from './pages/Dashboard/Home/Home'
+import { Profile } from './pages/Dashboard/Profile/Profile'
 import { NotFound } from './pages/NotFound/NotFound'
 
 import './App.css'
@@ -12,6 +15,9 @@ function App() {
     >
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
