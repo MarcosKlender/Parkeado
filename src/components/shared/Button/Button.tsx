@@ -3,13 +3,18 @@ import './Button.scss'
 
 type ButtonProps = {
     children: ReactNode
+    type?: 'button' | 'submit'
     variant?: 'success' | 'danger' | 'primary' | 'secondary'
     onClick?: () => void;
 }
 
-export function Button({ children, variant = 'primary', onClick }: ButtonProps) {
+export function Button({ children, type = 'button', variant = 'primary', onClick }: ButtonProps) {
     return (
-        <button className={`custom-button ${variant}`} onClick={onClick}>
+        <button
+            type={type}
+            onClick={onClick}
+            className={`custom-button ${variant}`}
+        >
             {children}
         </button>
     )

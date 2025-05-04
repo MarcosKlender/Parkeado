@@ -32,16 +32,22 @@ export function Login() {
                     <hr />
                     <Input
                         label="Correo"
+                        id="email"
+                        name="email"
                         placeholder="usuario@ejemplo.com"
                         variant="email"
+                        autoComplete="email"
                     />
                     <Input
                         label="Contraseña"
+                        id="password"
+                        name="password"
                         placeholder="********"
                         variant="password"
+                        autoComplete="current-password"
                     />
                     <a href="/register">Olvidé mi contraseña</a>
-                    <Button variant="success">Ingresar</Button>
+                    <Button type="submit" variant="success">Ingresar</Button>
                     <span>¿No tienes una cuenta? <a href="/register">Regístrate</a></span>
                 </form>
             </section>
