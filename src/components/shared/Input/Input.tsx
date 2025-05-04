@@ -21,6 +21,7 @@ export function Input({ label, id, name, placeholder, variant = 'text', autoComp
                     type={variant}
                     autoComplete={autoComplete}
                     className='custom-input'
+                    required
                 />
             </label>
         </>
