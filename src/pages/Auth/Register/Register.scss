@@ -1,0 +1,48 @@
+$text-color: #a1a1a1;
+$link-color: #1a1a1a;
+
+.register {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+
+    & h1 {
+        text-align: left;
+        font-size: 1.5rem;
+        margin-bottom: 0px;
+    }
+
+    & p {
+        text-align: left;
+        color: $text-color;
+    }
+
+    & hr {
+        width: 100%;
+        border: none;
+        background-color: $text-color;
+        height: 1px;
+        margin-block: 25px;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    & span {
+        font-size: 0.9rem;
+        color: $text-color;
+        margin-bottom: 15px;
+    }
+
+    & a {
+        font-size: 0.9rem;
+        color: $link-color;
+        text-decoration: none;
+    }
+
+    & a:hover {
+        text-decoration: underline;
+    }
+}
