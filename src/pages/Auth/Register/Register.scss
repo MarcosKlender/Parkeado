@@ -1,7 +1,7 @@
 $text-color: #a1a1a1;
 $link-color: #1a1a1a;
 
-main {
+.register-main {
     display: flex;
     height: 100vh;
     padding: 1rem;
@@ -14,13 +14,17 @@ main {
     justify-content: center;
     align-items: center;
     padding-block: 2rem;
-    
+
     & form {
         display: flex;
         flex-direction: column;
         min-width: 300px;
         overflow-y: auto;
         scrollbar-width: none;
+
+        & img {
+            width: 50px;
+        }
 
         & h1 {
             margin-top: 15px;

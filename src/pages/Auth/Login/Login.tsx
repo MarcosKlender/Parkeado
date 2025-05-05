@@ -11,11 +11,11 @@ export function Login() {
     const isDesktop = useIsDesktop()
 
     return (
-        <main>
+        <main className="login-main">
             {isDesktop && <AuthMap />}
             <section className="login">
                 <form>
-                    <img src={reactLogo} alt="Logo de React" width="50px" />
+                    <img src={reactLogo} alt="Logo de React" />
                     <h1>Inicio de Sesión</h1>
                     <p>Bienvenido a {appName}</p>
                     <hr />

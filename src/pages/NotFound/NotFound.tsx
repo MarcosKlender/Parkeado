@@ -1,11 +1,16 @@
+import electricCar from "@/assets/electric-car.svg"
+import "./NotFound.scss"
+
 export function NotFound() {
     return (
-        <>
-            <h1>404 - Not Found</h1>
-            <p>La página que estás buscando no existe.</p>
+        <main className="notfound-main">
+            <img src={electricCar} alt="Logo de React" />
+
+            <h1>¡Parqueadero ocupado!</h1>
+            <p>Un coche eléctrico se te ha adelantado, otra vez.</p>
             <a href="/">
-                Regresar
+                Buscar otro lugar
             </a>
-        </>
+        </main>
     )
 }

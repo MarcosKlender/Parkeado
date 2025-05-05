@@ -1,7 +1,7 @@
 $text-color: #a1a1a1;
 $link-color: #1a1a1a;
 
-main {
+.login-main {
     display: flex;
     height: 100vh;
     padding: 1rem;
@@ -21,6 +21,10 @@ main {
         min-width: 300px;
         overflow-y: auto;
         scrollbar-width: none;
+
+        & img {
+            width: 50px;
+        }
 
         & h1 {
             margin-top: 15px;

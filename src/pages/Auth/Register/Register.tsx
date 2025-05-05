@@ -10,11 +10,11 @@ export function Register() {
     const isDesktop = useIsDesktop()
 
     return (
-        <main>
+        <main className="register-main">
             {isDesktop && <AuthMap />}
             <section className="register">
                 <form>
-                    <img src={reactLogo} alt="Logo de React" width="50px" />
+                    <img src={reactLogo} alt="Logo de React" />
                     <h1>Registro</h1>
                     <p>Vamos a crear tu nueva cuenta</p>
                     <hr />
