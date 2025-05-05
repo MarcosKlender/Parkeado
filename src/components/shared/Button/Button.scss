@@ -8,12 +8,17 @@ $button-secondary: #6c757d;
 
 .custom-button {
     padding: 0.75rem 1.5rem;
-    margin-inline: 0.25rem;
+    margin-block: 0.75rem;
     border: none;
     border-radius: 10px;
     font-size: 1rem;
+    font-weight: bold;
     color: $text-color;
     cursor: pointer;
+
+    &:active {
+        transform: scale(0.99);
+    }
 
     &.success {
         background-color: $button-success;

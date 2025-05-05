@@ -1,42 +1,26 @@
-import { Button } from './components/shared/Button/Button';
-import { Parking } from './components/shared/Parking/Parking';
-import { Slot } from './components/shared/Slot/Slot';
-import { Avatar } from './components/shared/Avatar/Avatar';
-import { Input } from './components/shared/Input/Input';
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import { Login } from '@/pages/Auth/Login/Login'
+import { Register } from '@/pages/Auth/Register/Register'
+import { Home } from '@/pages/Dashboard/Home/Home'
+import { Profile } from '@/pages/Dashboard/Profile/Profile'
+import { NotFound } from '@/pages/NotFound/NotFound'
+
+import '@/App.css'
 
 function App() {
   return (
-    <>
-      <h2>Botones</h2>
-      <Button variant="success">Success</Button>
-      <Button variant="danger">Danger</Button>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
-
-      <h2>Parqueadero</h2>
-      <Parking
-        name='Central Plaza Parking'
-        address='742 Evergreen Terrace, Springfield'
-        availableSlots={20}
-      />
-
-      <h2>Plazas</h2>
-      <Slot number={1} isAvailable={true} />
-      <Slot number={2} isAvailable={false} />
-      <Slot number={3} isAvailable={true} />
-      <Slot number={4} isAvailable={false} />
-
-      <h2>Avatar</h2>
-      <Avatar name='Cristian Guerrero' />
-      <Avatar name='Marcos Carrasco' />
-      <Avatar name='Moisés Arias' />
-
-      <h2>Inputs</h2>
-      <Input variant='text' label='Nombre y Apellido' placeholder='John Doe' />
-      <Input variant='email' label='Correo' placeholder='usuario@example.com' />
-      <Input variant='password' label='Contraseña' placeholder='**********' />
-    </>
+    <BrowserRouter
+      future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
+    >
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
