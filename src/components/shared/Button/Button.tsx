@@ -4,7 +4,7 @@ import './Button.scss'
 type ButtonProps = {
     children: ReactNode
     type?: 'button' | 'submit'
-    variant?: 'success' | 'danger' | 'primary' | 'secondary'
+    variant?: 'primary' | 'secondary' | 'success' | 'danger'
     onClick?: () => void;
 }
 

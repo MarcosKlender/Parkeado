@@ -47,16 +47,5 @@ $link-color: #1a1a1a;
             text-align: center;
             color: $text-color;
         }
-
-        & a {
-            font-size: 0.9rem;
-            text-align: center;
-            text-decoration: none;
-            color: $link-color;
-        }
-
-        & a:hover {
-            text-decoration: underline;
-        }
     }
 }

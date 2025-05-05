@@ -1,6 +1,7 @@
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
 import { AuthMap } from "@/components/shared/AuthMap/AuthMap"
+import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
 import { useIsDesktop } from "@/hooks/useIsDesktop"
 
 import reactLogo from "@/assets/react.svg"
@@ -61,7 +62,9 @@ export function Register() {
                         autoComplete="new-password"
                     />
                     <Button type="submit" variant="success">Registrarse</Button>
-                    <span>¿Ya tienes una cuenta? <a href="/">Inicia sesión</a></span>
+                    <span>
+                        ¿Ya tienes una cuenta? <LinkButton to="/" variant="text">Inicia sesión</LinkButton>
+                    </span>
                 </form>
             </section>
         </main>
