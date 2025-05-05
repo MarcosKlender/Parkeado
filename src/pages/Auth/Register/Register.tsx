@@ -1,14 +1,17 @@
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
 import { AuthMap } from "@/components/shared/AuthMap/AuthMap"
+import { useIsDesktop } from "@/hooks/useIsDesktop"
 
 import reactLogo from "@/assets/react.svg"
 import "./Register.scss"
 
 export function Register() {
+    const isDesktop = useIsDesktop()
+
     return (
         <main>
-            <AuthMap />
+            {isDesktop && <AuthMap />}
             <section className="register">
                 <form>
                     <img src={reactLogo} alt="Logo de React" width="50px" />

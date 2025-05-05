@@ -13,14 +13,17 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-block: 2rem;
 
     & form {
         display: flex;
         flex-direction: column;
         min-width: 300px;
+        overflow-y: auto;
+        scrollbar-width: none;
 
         & h1 {
-            margin-block: 15px 5px;
+            margin-top: 15px;
             font-size: 1.5rem;
         }
 
@@ -32,7 +35,7 @@ main {
             border: none;
             background-color: $text-color;
             height: 1px;
-            margin-block: 25px;
+            margin-block: 25px 15px;
         }
 
         & span {
@@ -46,7 +49,6 @@ main {
             text-align: center;
             text-decoration: none;
             color: $link-color;
-            margin-bottom: 15px;
         }
 
         & a:hover {
