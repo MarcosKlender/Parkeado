@@ -1,0 +1,12 @@
+$footer-color: #fafafa;
+$text-color: #1a1a1a;
+
+.custom-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $footer-color;
+    height: 30px;
+    font-size: 0.8rem;
+    color: $text-color;
+}
