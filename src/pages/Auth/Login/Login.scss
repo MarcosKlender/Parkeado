@@ -35,11 +35,12 @@ $link-color: #1a1a1a;
             color: $text-color;
         }
 
-        & hr {
-            border: none;
-            background-color: $text-color;
+        & .divider {
             height: 1px;
+            width: 100%;
+            background-color: $text-color;
             margin-block: 25px 15px;
+            flex-shrink: 0;
         }
 
         & span {

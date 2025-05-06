@@ -1,7 +1,7 @@
-import { Input } from "@/components/shared/Input/Input"
-import { Button } from "@/components/shared/Button/Button"
-import { AuthMap } from "@/components/shared/AuthMap/AuthMap"
-import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
+import { Input } from "@/components/ui/Input/Input"
+import { Button } from "@/components/ui/Button/Button"
+import { LinkButton } from "@/components/ui/LinkButton/LinkButton"
+import { AuthMap } from "@/components/maps/AuthMap/AuthMap"
 import { useIsDesktop } from "@/hooks/useIsDesktop"
 
 import reactLogo from "@/assets/react.svg"
@@ -19,7 +19,7 @@ export function Login() {
                     <img src={reactLogo} alt="Logo de React" />
                     <h1>Inicio de Sesión</h1>
                     <p>Bienvenido a {appName}</p>
-                    <hr />
+                    <div className="divider" />
                     <Input
                         label="Correo"
                         id="email"

@@ -1,4 +1,4 @@
-import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
+import { LinkButton } from "@/components/ui/LinkButton/LinkButton"
 import electricCar from "@/assets/electric-car.svg"
 import "./NotFound.scss"
 
