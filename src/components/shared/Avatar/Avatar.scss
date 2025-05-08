@@ -2,8 +2,7 @@ $bg-color: #000000;
 $text-color: #ffffff;
 
 .avatar {
-    margin-inline: 0.5rem;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 35px;

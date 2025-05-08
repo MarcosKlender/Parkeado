@@ -33,5 +33,9 @@ $navbar-color: #fafafa;
 @media (max-width: 768px) {
     .navbar {
         padding-inline: 1rem;
+
+        & ul {
+            gap: 15px;
+        }
     }
 }

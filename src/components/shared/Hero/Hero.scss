@@ -7,9 +7,11 @@ $description-color: #8a8a8a;
     & .title {
         color: $title-color;
         margin-bottom: .5rem;
+        line-height: 1.25;
     }
 
     & .description {
         color: $description-color;
+        text-wrap: pretty;
     }
 }
