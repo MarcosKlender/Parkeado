@@ -22,7 +22,11 @@ $navbar-color: #fafafa;
     & ul {
         list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 30px;
+
+        & li {
+            margin-block: auto;
+        }
     }
 }
 
