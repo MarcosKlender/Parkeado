@@ -1,4 +1,5 @@
-import { Header } from "@/components/ui/Header/Header";
+import { Header } from "@/components/shared/Header/Header";
+import { Hero } from "@/components/shared/Hero/Hero"
 import "./Reservation.scss"
 
 export function Reservation() {
@@ -6,7 +7,10 @@ export function Reservation() {
         <>
             <Header />
             <main className="reservation-main">
-                <h1>Reservation</h1>
+                <Hero
+                    title="Mi Reserva"
+                    description="Aquí podrás administrar tu plaza de aparcamiento."
+                />
             </main>
         </>
     )
