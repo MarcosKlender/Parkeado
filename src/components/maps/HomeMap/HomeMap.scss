@@ -1,0 +1,8 @@
+.home-map {
+    width: 65%;
+    height: 500px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
