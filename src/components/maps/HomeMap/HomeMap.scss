@@ -1,6 +1,7 @@
 .home-map {
-    width: 65%;
+    flex: 1;
     height: 500px;
+    border-radius: 10px;
 
     @media (max-width: 768px) {
         width: 100%;

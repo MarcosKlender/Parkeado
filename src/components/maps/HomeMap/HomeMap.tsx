@@ -1,6 +1,6 @@
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
-import "@/../node_modules/leaflet/dist/leaflet.css";
+import "leaflet/dist/leaflet.css"
 import "./HomeMap.scss";
 
 type MapMarker = {

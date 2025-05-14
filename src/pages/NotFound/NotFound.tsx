@@ -1,11 +1,11 @@
 import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
-import electricCar from "@/assets/electric-car.svg"
+import notFoundImage from "@/assets/not-found.svg"
 import "./NotFound.scss"
 
 export function NotFound() {
     return (
         <main className="notfound-main">
-            <img src={electricCar} alt="Logo de React" />
+            <img src={notFoundImage} alt="Logo de React" />
 
             <h1>¡Parqueadero ocupado!</h1>
             <p>Un coche eléctrico se te ha adelantado, otra vez.</p>
