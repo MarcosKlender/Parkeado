@@ -30,5 +30,19 @@ $border-color: #8a8a8a;
                 }
             }
         }
+
+    }
+
+    @media (max-width: 768px) {
+        & .home-content {
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 25px;
+
+            & section {
+                width: 100%;
+                padding-block: 25px;
+            }
+        }
     }
 }
