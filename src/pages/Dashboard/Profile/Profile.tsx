@@ -1,5 +1,5 @@
 import { Header } from "@/components/shared/Header/Header"
-import { Hero } from "@/components/shared/Hero/Hero"
+import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
 import "./Profile.scss"
@@ -9,7 +9,7 @@ export function Profile() {
         <>
             <Header />
             <main className="profile-main">
-                <Hero
+                <PageTitle
                     title="Mi Perfil"
                     description="Aquí podrás editar la información de tu cuenta."
                 />

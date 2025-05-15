@@ -44,4 +44,10 @@ $pill-text: #ffffff;
     &:active {
         transform: scale(0.99);
     }
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 }

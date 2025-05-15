@@ -28,10 +28,8 @@ $navbar-color: #fafafa;
             margin-block: auto;
         }
     }
-}
 
-@media (max-width: 768px) {
-    .navbar {
+    @media (max-width: 768px) {
         padding-inline: 1rem;
 
         & ul {
