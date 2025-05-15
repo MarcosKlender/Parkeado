@@ -1,6 +1,6 @@
 import { Header } from "@/components/shared/Header/Header"
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
-import { HomeMap, MapMarker } from "@/components/maps/HomeMap/HomeMap"
+import { MarkersMap, MapMarker } from "@/components/maps/MarkersMap/MarkersMap"
 import { Parking } from "@/components/shared/Parking/Parking"
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle"
 import carIcon from "@/assets/car.svg"
@@ -23,7 +23,7 @@ export function Home() {
                     description="Encuentre plazas de aparcamiento disponibles en tiempo real."
                 />
                 <div className="home-content">
-                    <HomeMap markers={markers} center={markers[0].position} />
+                    <MarkersMap markers={markers} center={markers[0].position} />
                     <section>
                         <ContentTitle
                             icon={carIcon}

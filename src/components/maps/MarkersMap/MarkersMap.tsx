@@ -1,25 +1,25 @@
 import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
 import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css"
-import "./HomeMap.scss";
+import "./MarkersMap.scss";
 
 export type MapMarker = {
     position: LatLngExpression
     text: string
 }
 
-type HomeMapProps = {
+type MarkersMapProps = {
     markers: MapMarker[]
     center: LatLngExpression
     zoom?: number
 }
 
-export function HomeMap({ markers, center, zoom = 13 }: HomeMapProps) {
+export function MarkersMap({ markers, center, zoom = 13 }: MarkersMapProps) {
     return (
         <MapContainer
             center={center}
             zoom={zoom}
-            className="home-map"
+            className="markers-map"
         >
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

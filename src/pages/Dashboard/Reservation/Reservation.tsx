@@ -1,6 +1,6 @@
 import { Header } from "@/components/shared/Header/Header";
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
-import { HomeMap, MapMarker } from "@/components/maps/HomeMap/HomeMap";
+import { MarkersMap, MapMarker } from "@/components/maps/MarkersMap/MarkersMap";
 import { Parking } from "@/components/shared/Parking/Parking";
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
 import trafficIcon from "@/assets/traffic.svg"
@@ -20,7 +20,7 @@ export function Reservation() {
                     description="Aquí podrás administrar tu plaza de aparcamiento."
                 />
                 <div className="reservation-content">
-                    <HomeMap markers={markers} center={markers[0].position} zoom={16} />
+                    <MarkersMap markers={markers} center={markers[0].position} zoom={16} />
                     <section>
                         <ContentTitle
                             icon={trafficIcon}
