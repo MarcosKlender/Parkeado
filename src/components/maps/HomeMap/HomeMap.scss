@@ -1,10 +1,11 @@
 .home-map {
     flex: 1;
-    height: 500px;
+    height: auto;
     border-radius: 10px;
 
     @media (max-width: 768px) {
         flex: none;
+        height: 50dvh;
         width: 100%;
     }
 }

@@ -28,6 +28,12 @@ export function Home() {
                             <Parking name="Parqueadero 2" address="Avenida Siempreviva 742" availableSlots={20} />
                             <Parking name="Parqueadero 3" address="Avenida Siempreviva 742" availableSlots={20} />
                             <Parking name="Parqueadero 4" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 5" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 6" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 7" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 8" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 9" address="Avenida Siempreviva 742" availableSlots={20} />
+                            <Parking name="Parqueadero 10" address="Avenida Siempreviva 742" availableSlots={20} />
                         </div>
                     </section>
                 </div>
