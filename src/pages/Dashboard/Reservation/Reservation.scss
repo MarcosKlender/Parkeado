@@ -5,6 +5,7 @@ $border-color: #8a8a8a;
     margin-inline: auto;
 
     & .reservation-content {
+        height: 60vh;
         display: flex;
         border: 1px solid $border-color;
         border-radius: 10px;
@@ -24,6 +25,7 @@ $border-color: #8a8a8a;
     @media (max-width: 768px) {
         & .reservation-content {
             flex-direction: column-reverse;
+            height: auto;
             width: 100%;
 
             & section {

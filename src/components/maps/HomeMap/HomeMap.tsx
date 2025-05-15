@@ -3,24 +3,22 @@ import { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css"
 import "./HomeMap.scss";
 
-type MapMarker = {
-    position: [number, number]
+export type MapMarker = {
+    position: LatLngExpression
     text: string
 }
 
-const position: LatLngExpression = [4.704, -74.087];
-const markers: MapMarker[] = [
-    { position: [4.719, -74.089], text: "Parqueadero 1" },
-    { position: [4.709, -74.057], text: "Parqueadero 2" },
-    { position: [4.690, -74.079], text: "Parqueadero 3" },
-    { position: [4.702, -74.123], text: "Parqueadero 4" }
-];
+type HomeMapProps = {
+    markers: MapMarker[]
+    center: LatLngExpression
+    zoom?: number
+}
 
-export function HomeMap() {
+export function HomeMap({ markers, center, zoom = 13 }: HomeMapProps) {
     return (
         <MapContainer
-            center={position}
-            zoom={13}
+            center={center}
+            zoom={zoom}
             className="home-map"
         >
             <TileLayer

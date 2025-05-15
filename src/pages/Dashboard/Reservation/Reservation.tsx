@@ -1,12 +1,16 @@
 import { Header } from "@/components/shared/Header/Header";
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
-import { HomeMap } from "@/components/maps/HomeMap/HomeMap";
+import { HomeMap, MapMarker } from "@/components/maps/HomeMap/HomeMap";
 import { Parking } from "@/components/shared/Parking/Parking";
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
 import trafficIcon from "@/assets/traffic.svg"
 import "./Reservation.scss"
 
 export function Reservation() {
+    const markers: MapMarker[] = [
+        { position: [4.719, -74.089], text: "Parqueadero 1" }
+    ];
+
     return (
         <>
             <Header />
@@ -16,7 +20,7 @@ export function Reservation() {
                     description="Aquí podrás administrar tu plaza de aparcamiento."
                 />
                 <div className="reservation-content">
-                    <HomeMap />
+                    <HomeMap markers={markers} center={markers[0].position} zoom={16} />
                     <section>
                         <ContentTitle
                             icon={trafficIcon}
