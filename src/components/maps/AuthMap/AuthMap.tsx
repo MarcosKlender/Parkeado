@@ -1,7 +1,6 @@
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { LatLngExpression } from "leaflet"
-
-import "@/../node_modules/leaflet/dist/leaflet.css"
+import "leaflet/dist/leaflet.css"
 import "./AuthMap.scss"
 
 const position: LatLngExpression = [4.68, -74.10]

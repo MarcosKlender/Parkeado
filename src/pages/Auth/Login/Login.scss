@@ -1,7 +1,7 @@
 $text-color: #a1a1a1;
 $link-color: #1a1a1a;
 
-main {
+.login-main {
     display: flex;
     height: 100vh;
     padding: 1rem;
@@ -13,14 +13,21 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-block: 2rem;
 
     & form {
         display: flex;
         flex-direction: column;
         min-width: 300px;
+        overflow-y: auto;
+        scrollbar-width: none;
+
+        & img {
+            width: 50px;
+        }
 
         & h1 {
-            margin-block: 15px 5px;
+            margin-top: 15px;
             font-size: 1.5rem;
         }
 
@@ -28,29 +35,18 @@ main {
             color: $text-color;
         }
 
-        & hr {
-            border: none;
-            background-color: $text-color;
+        & .divider {
             height: 1px;
-            margin-block: 25px;
+            width: 100%;
+            background-color: $text-color;
+            margin-block: 25px 15px;
+            flex-shrink: 0;
         }
 
         & span {
             font-size: 0.9rem;
             text-align: center;
             color: $text-color;
-        }
-
-        & a {
-            font-size: 0.9rem;
-            text-align: center;
-            text-decoration: none;
-            color: $link-color;
-            margin-bottom: 15px;
-        }
-
-        & a:hover {
-            text-decoration: underline;
         }
     }
 }

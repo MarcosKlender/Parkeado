@@ -1,22 +1,25 @@
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
-import { AuthMap } from "@/components/shared/AuthMap/AuthMap"
+import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
+import { AuthMap } from "@/components/maps/AuthMap/AuthMap"
+import { useIsDesktop } from "@/hooks/useIsDesktop"
 
 import reactLogo from "@/assets/react.svg"
 import "./Login.scss"
 
 export function Login() {
     const appName = import.meta.env.VITE_APP_NAME
+    const isDesktop = useIsDesktop()
 
     return (
-        <main>
-            <AuthMap />
+        <main className="login-main">
+            {isDesktop && <AuthMap />}
             <section className="login">
                 <form>
-                    <img src={reactLogo} alt="Logo de React" width="50px" />
+                    <img src={reactLogo} alt="Logo de React" />
                     <h1>Inicio de Sesión</h1>
                     <p>Bienvenido a {appName}</p>
-                    <hr />
+                    <div className="divider" />
                     <Input
                         label="Correo"
                         id="email"
@@ -33,9 +36,13 @@ export function Login() {
                         variant="password"
                         autoComplete="current-password"
                     />
-                    <a href="/register">Olvidé mi contraseña</a>
+                    <span>
+                        <LinkButton to="/register" variant="text">Olvidé mi contraseña</LinkButton>
+                    </span>
                     <Button type="submit" variant="success">Ingresar</Button>
-                    <span>¿No tienes una cuenta? <a href="/register">Regístrate</a></span>
+                    <span>
+                        ¿No tienes una cuenta? <LinkButton to="/register" variant="text">Regístrate</LinkButton>
+                    </span>
                 </form>
             </section>
         </main>

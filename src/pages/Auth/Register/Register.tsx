@@ -1,20 +1,24 @@
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
-import { AuthMap } from "@/components/shared/AuthMap/AuthMap"
+import { LinkButton } from "@/components/shared/LinkButton/LinkButton"
+import { AuthMap } from "@/components/maps/AuthMap/AuthMap"
+import { useIsDesktop } from "@/hooks/useIsDesktop"
 
 import reactLogo from "@/assets/react.svg"
 import "./Register.scss"
 
 export function Register() {
+    const isDesktop = useIsDesktop()
+
     return (
-        <main>
-            <AuthMap />
+        <main className="register-main">
+            {isDesktop && <AuthMap />}
             <section className="register">
                 <form>
-                    <img src={reactLogo} alt="Logo de React" width="50px" />
+                    <img src={reactLogo} alt="Logo de React" />
                     <h1>Registro</h1>
                     <p>Vamos a crear tu nueva cuenta</p>
-                    <hr />
+                    <div className="divider" />
                     <Input
                         label="Nombre y Apellido"
                         id="name"
@@ -58,7 +62,9 @@ export function Register() {
                         autoComplete="new-password"
                     />
                     <Button type="submit" variant="success">Registrarse</Button>
-                    <span>¿Ya tienes una cuenta? <a href="/">Inicia sesión</a></span>
+                    <span>
+                        ¿Ya tienes una cuenta? <LinkButton to="/" variant="text">Inicia sesión</LinkButton>
+                    </span>
                 </form>
             </section>
         </main>
