@@ -8,11 +8,19 @@ import "./Home.scss"
 
 export function Home() {
     const markers: MapMarker[] = [
-        { position: [4.719, -74.089], text: "Parqueadero 1" },
-        { position: [4.709, -74.057], text: "Parqueadero 2" },
-        { position: [4.690, -74.079], text: "Parqueadero 3" },
-        { position: [4.702, -74.123], text: "Parqueadero 4" }
-    ];
+        { position: [4.650, -74.083], text: "Parqueadero Teusaquillo" },
+        { position: [4.752, -74.091], text: "Parqueadero Suba - Centro" },
+        { position: [4.693, -74.030], text: "Parqueadero Usaquén" },
+        { position: [4.701, -74.084], text: "Parqueadero Cedritos" },
+        { position: [4.678, -74.049], text: "Parqueadero Chapinero" },
+        { position: [4.612, -74.070], text: "Parqueadero La Candelaria" },
+        { position: [4.624, -74.122], text: "Parqueadero Kennedy Central" },
+        { position: [4.643, -74.068], text: "Parqueadero Antonio Nariño" },
+        { position: [4.586, -74.100], text: "Parqueadero Bosa" },
+        { position: [4.664, -74.145], text: "Parqueadero Engativá" }
+    ]
+
+
 
     return (
         <>
@@ -31,16 +39,16 @@ export function Home() {
                             description="Haga clic en un marcador para ver más información sobre las plazas de aparcamiento disponibles."
                         />
                         <div className="parking-list">
-                            <Parking name="Parqueadero 1" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 2" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 3" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 4" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 5" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 6" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 7" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 8" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 9" address="Avenida Siempreviva 742" availableSlots={20} />
-                            <Parking name="Parqueadero 10" address="Avenida Siempreviva 742" availableSlots={20} />
+                            {
+                                markers.map((marker, index) => (
+                                    <Parking
+                                        key={index}
+                                        name={marker.text}
+                                        address="Avenida Siempreviva 742"
+                                        availableSlots={20}
+                                    />
+                                ))
+                            }
                         </div>
                     </section>
                 </div>

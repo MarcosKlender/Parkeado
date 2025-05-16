@@ -8,7 +8,7 @@ import "./Reservation.scss"
 
 export function Reservation() {
     const markers: MapMarker[] = [
-        { position: [4.719, -74.089], text: "Parqueadero 1" }
+        { position: [4.650, -74.083], text: "Parqueadero Teusaquillo" }
     ];
 
     return (
@@ -27,7 +27,7 @@ export function Reservation() {
                             title="Maneja con cuidado"
                             description="Recuerda que tu reserva expirará automáticamente dentro de 1 hora."
                         />
-                        <Parking name="Parqueadero 1" address="Avenida Siempreviva 742" availableSlots={20} />
+                        <Parking name={markers[0].text} address="Avenida Siempreviva 742" availableSlots={20} />
                     </section>
                 </div>
             </main>
