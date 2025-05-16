@@ -1,7 +1,8 @@
-import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet";
-import { LatLngExpression } from "leaflet";
+import { MapContainer, TileLayer, Marker, Tooltip } from "react-leaflet"
+import { DefaultMarkerIcon } from "@/lib/leaflet-icons"
+import { LatLngExpression } from "leaflet"
 import "leaflet/dist/leaflet.css"
-import "./MarkersMap.scss";
+import "./MarkersMap.scss"
 
 export type MapMarker = {
     position: LatLngExpression
@@ -27,7 +28,7 @@ export function MarkersMap({ markers, center, zoom = 13 }: MarkersMapProps) {
             />
             {
                 markers.map((marker, index) => (
-                    <Marker key={index} position={marker.position}>
+                    <Marker key={index} position={marker.position} icon={DefaultMarkerIcon}>
                         <Tooltip>{marker.text}</Tooltip>
                     </Marker>
                 ))
