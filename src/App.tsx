@@ -9,7 +9,7 @@ import { NotFound } from '@/pages/NotFound/NotFound'
 
 import '@/App.css'
 
-function App() {
+export function App() {
   return (
     <BrowserRouter
       future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
@@ -25,5 +25,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App
