@@ -8,7 +8,6 @@ import reactLogo from "@/assets/react.svg"
 import "./Login.scss"
 
 export function Login() {
-    const appName = import.meta.env.VITE_APP_NAME
     const isDesktop = useIsDesktop()
 
     return (
@@ -18,7 +17,7 @@ export function Login() {
                 <form>
                     <img src={reactLogo} alt="Logo de React" />
                     <h1>Inicio de Sesión</h1>
-                    <p>Bienvenido a {appName}</p>
+                    <p>Bienvenido a Parkeado</p>
                     <div className="divider" />
                     <Input
                         label="Correo"

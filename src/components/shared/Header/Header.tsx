@@ -4,14 +4,12 @@ import reactLogo from "@/assets/react.svg"
 import "./Header.scss"
 
 export function Header() {
-    const appName = import.meta.env.VITE_APP_NAME
-
     return (
         <header>
             <nav className="navbar">
                 <div className="brand">
                     <img src={reactLogo} alt="Logo de React" />
-                    <p>{appName}</p>
+                    <p>Parkeado</p>
                 </div>
                 <ul>
                     <li>
