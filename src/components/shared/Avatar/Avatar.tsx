@@ -1,21 +1,22 @@
+import { useUser } from '@/hooks/useUser'
 import './Avatar.scss'
 
-type AvatarProps = {
-    name: string
-}
+export function Avatar() {
+    const { data: user } = useUser()
 
-export function Avatar({ name }: AvatarProps) {
-    const getInitials = (fullName: string) => {
-        return fullName
+    const getInitials = (name: string) => {
+        return name
             .split(' ')
             .map(word => word[0])
             .join('')
             .toUpperCase()
     }
 
+    const initials = user ? getInitials(user.name) : ''
+
     return (
         <span className='avatar'>
-            {getInitials(name)}
+            {initials}
         </span>
     )
 }

@@ -5,11 +5,12 @@ type InputProps = {
     id: string
     name: string
     placeholder: string
-    variant?: 'text' | 'email' | 'password'
     autoComplete: string
+    variant?: 'text' | 'email' | 'password'
+    defaultValue?: string
 }
 
-export function Input({ label, id, name, placeholder, variant = 'text', autoComplete }: InputProps) {
+export function Input({ label, id, name, placeholder, autoComplete, variant = 'text', defaultValue }: InputProps) {
     return (
         <>
             <label className='custom-label'>
@@ -20,6 +21,7 @@ export function Input({ label, id, name, placeholder, variant = 'text', autoComp
                     placeholder={placeholder}
                     type={variant}
                     autoComplete={autoComplete}
+                    defaultValue={defaultValue}
                     className='custom-input'
                     required
                 />
