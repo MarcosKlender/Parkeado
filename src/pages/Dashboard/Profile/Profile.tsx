@@ -8,7 +8,7 @@ import { Button } from "@/components/shared/Button/Button"
 import "./Profile.scss"
 
 export function Profile() {
-    const { data: user, isLoading, error } = useUser()
+    const { data: user, isLoading, error, refetch } = useUser()
 
     return (
         <>
@@ -21,9 +21,16 @@ export function Profile() {
 
                 {
                     isLoading ? (
-                        <p className="query-message">Cargando perfil del usuario...</p>
+                        <div className="query-container">
+                            <div className="spinner" />
+                        </div>
                     ) : error || !user ? (
-                        <p className="query-message">Error al cargar los datos.</p>
+                        <div className="query-container">
+                            <p>Ocurrió un error al cargar los datos</p>
+                            <Button variant="success" onClick={() => refetch()}>
+                                Reintentar
+                            </Button>
+                        </div>
                     ) : (
                         <div className="forms-container">
                             <form>
