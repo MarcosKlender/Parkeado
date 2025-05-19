@@ -4,6 +4,7 @@ import { Header } from "@/components/shared/Header/Header"
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
 import { Input } from "@/components/shared/Input/Input"
 import { Button } from "@/components/shared/Button/Button"
+import { QueryState } from "@/components/shared/QueryState/QueryState"
 
 import "./Profile.scss"
 
@@ -19,17 +20,14 @@ export function Profile() {
                     description="Aquí podrás editar la información de tu cuenta."
                 />
                 {isLoading && (
-                    <div className="query-container">
-                        <div className="spinner" />
-                    </div>
+                    <QueryState status="loading" />
                 )}
                 {error && (
-                    <div className="query-container">
-                        <p>Ocurrió un error al cargar los datos</p>
-                        <Button variant="success" onClick={() => refetch()}>
-                            Reintentar
-                        </Button>
-                    </div>
+                    <QueryState
+                        status="error"
+                        errorMessage="Ocurrió un error al cargar los datos del usuario"
+                        onClick={() => refetch()}
+                    />
                 )}
                 {user && (
                     <div className="forms-container">

@@ -5,7 +5,7 @@ import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap"
 import { Parking } from "@/components/shared/Parking/Parking"
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle"
-import { Button } from "@/components/shared/Button/Button"
+import { QueryState } from "@/components/shared/QueryState/QueryState"
 
 import carIcon from "@/assets/car.svg"
 import "./Home.scss"
@@ -22,17 +22,14 @@ export function Home() {
                     description="Encuentre plazas de aparcamiento disponibles en tiempo real."
                 />
                 {isLoading && (
-                    <div className="query-container">
-                        <div className="spinner" />
-                    </div>
+                    <QueryState status="loading" />
                 )}
                 {error && (
-                    <div className="query-container">
-                        <p>Ocurrió un error al cargar el mapa</p>
-                        <Button variant="success" onClick={() => refetch()}>
-                            Reintentar
-                        </Button>
-                    </div>
+                    <QueryState
+                        status="error"
+                        errorMessage="Ocurrió un error al cargar el mapa"
+                        onClick={() => refetch()}
+                    />
                 )}
                 {parkings && parkings.length > 0 && (
                     <div className="home-content">
