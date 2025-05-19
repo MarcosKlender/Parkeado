@@ -21,9 +21,9 @@ export function Profile() {
 
                 {
                     isLoading ? (
-                        <p>Cargando perfil del usuario...</p>
+                        <p className="query-message">Cargando perfil del usuario...</p>
                     ) : error || !user ? (
-                        <p>Error al cargar los datos.</p>
+                        <p className="query-message">Error al cargar los datos.</p>
                     ) : (
                         <div className="forms-container">
                             <form>

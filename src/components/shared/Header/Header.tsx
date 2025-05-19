@@ -24,7 +24,7 @@ export function Header() {
                     </li>
                     <li>
                         <LinkButton to="/profile" variant="text">
-                            <Avatar name="Marcos Carrasco" />
+                            <Avatar />
                         </LinkButton>
                     </li>
                 </ul>
