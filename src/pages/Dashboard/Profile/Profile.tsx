@@ -18,83 +18,82 @@ export function Profile() {
                     title="Mi Perfil"
                     description="Aquí podrás editar la información de tu cuenta."
                 />
-
-                {
-                    isLoading ? (
-                        <div className="query-container">
-                            <div className="spinner" />
-                        </div>
-                    ) : error || !user ? (
-                        <div className="query-container">
-                            <p>Ocurrió un error al cargar los datos</p>
-                            <Button variant="success" onClick={() => refetch()}>
-                                Reintentar
-                            </Button>
-                        </div>
-                    ) : (
-                        <div className="forms-container">
-                            <form>
-                                <h2>Datos del Usuario</h2>
-                                <Input
-                                    label="Nombre y Apellido"
-                                    id="name"
-                                    name="name"
-                                    placeholder="John Doe"
-                                    variant="text"
-                                    autoComplete="name"
-                                    defaultValue={user.name}
-                                />
-                                <Input
-                                    label="Correo"
-                                    id="email"
-                                    name="email"
-                                    placeholder="usuario@example.com"
-                                    variant="email"
-                                    autoComplete="email"
-                                    defaultValue={user.email}
-                                />
-                                <Input
-                                    label="Placa del Vehículo"
-                                    id="plate"
-                                    name="plate"
-                                    placeholder="ABC-1234"
-                                    variant="text"
-                                    autoComplete="on"
-                                    defaultValue={user.plate}
-                                />
-                                <Button type="submit" variant="success">Actualizar Datos</Button>
-                            </form>
-                            <form>
-                                <h2>Contraseña de Acceso</h2>
-                                <Input
-                                    label="Contraseña Actual"
-                                    id="current-password"
-                                    name="current-password"
-                                    placeholder="********"
-                                    variant="password"
-                                    autoComplete="current-password"
-                                />
-                                <Input
-                                    label="Nueva Contraseña"
-                                    id="new-password"
-                                    name="new-password"
-                                    placeholder="********"
-                                    variant="password"
-                                    autoComplete="new-password"
-                                />
-                                <Input
-                                    label="Confirmar Nueva Contraseña"
-                                    id="confirm-password"
-                                    name="confirm-password"
-                                    placeholder="********"
-                                    variant="password"
-                                    autoComplete="new-password"
-                                />
-                                <Button type="submit" variant="success">Cambiar Contraseña</Button>
-                            </form>
-                        </div>
-                    )
-                }
+                {isLoading && (
+                    <div className="query-container">
+                        <div className="spinner" />
+                    </div>
+                )}
+                {error && (
+                    <div className="query-container">
+                        <p>Ocurrió un error al cargar los datos</p>
+                        <Button variant="success" onClick={() => refetch()}>
+                            Reintentar
+                        </Button>
+                    </div>
+                )}
+                {user && (
+                    <div className="forms-container">
+                        <form>
+                            <h2>Datos del Usuario</h2>
+                            <Input
+                                label="Nombre y Apellido"
+                                id="name"
+                                name="name"
+                                placeholder="John Doe"
+                                variant="text"
+                                autoComplete="name"
+                                defaultValue={user.name}
+                            />
+                            <Input
+                                label="Correo"
+                                id="email"
+                                name="email"
+                                placeholder="usuario@example.com"
+                                variant="email"
+                                autoComplete="email"
+                                defaultValue={user.email}
+                            />
+                            <Input
+                                label="Placa del Vehículo"
+                                id="plate"
+                                name="plate"
+                                placeholder="ABC-1234"
+                                variant="text"
+                                autoComplete="on"
+                                defaultValue={user.plate}
+                            />
+                            <Button type="submit" variant="success">Actualizar Datos</Button>
+                        </form>
+                        <form>
+                            <h2>Contraseña de Acceso</h2>
+                            <Input
+                                label="Contraseña Actual"
+                                id="current-password"
+                                name="current-password"
+                                placeholder="********"
+                                variant="password"
+                                autoComplete="current-password"
+                            />
+                            <Input
+                                label="Nueva Contraseña"
+                                id="new-password"
+                                name="new-password"
+                                placeholder="********"
+                                variant="password"
+                                autoComplete="new-password"
+                            />
+                            <Input
+                                label="Confirmar Nueva Contraseña"
+                                id="confirm-password"
+                                name="confirm-password"
+                                placeholder="********"
+                                variant="password"
+                                autoComplete="new-password"
+                            />
+                            <Button type="submit" variant="success">Cambiar Contraseña</Button>
+                        </form>
+                    </div>
+                )}
             </main>
         </>
     )
