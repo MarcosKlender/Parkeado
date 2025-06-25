@@ -33,7 +33,7 @@ export function Reservation() {
                 )}
                 {parkings && parkings.length > 0 && (
                     <div className="reservation-content">
-                        <MarkersMap parkings={parkings} center={parkings[0].position} zoom={16} />
+                        <MarkersMap parkings={parkings} center={parkings[0].details[0].position} zoom={16} />
                         <section>
                             <ContentTitle
                                 icon={trafficIcon}
@@ -42,8 +42,8 @@ export function Reservation() {
                             />
                             <Parking
                                 name={parkings[0].name}
-                                address={parkings[0].address}
-                                availableSlots={parkings[0].availableSlots}
+                                address={parkings[0].details[0].address}
+                                availableSlots={parkings[0].details[0].availableSpots}
                             />
                         </section>
                     </div>

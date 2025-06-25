@@ -33,7 +33,7 @@ export function Home() {
                 )}
                 {parkings && parkings.length > 0 && (
                     <div className="home-content">
-                        <MarkersMap parkings={parkings} center={parkings[0].position} />
+                        <MarkersMap parkings={parkings} center={parkings[0].details[0].position} />
                         <section>
                             <ContentTitle
                                 icon={carIcon}
@@ -46,8 +46,8 @@ export function Home() {
                                         <Parking
                                             key={parking.id}
                                             name={parking.name}
-                                            address={parking.address}
-                                            availableSlots={parking.availableSlots}
+                                            address={parking.details[0].address}
+                                            availableSlots={parking.details[0].availableSpots}
                                         />
                                     ))
                                 }

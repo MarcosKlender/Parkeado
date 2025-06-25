@@ -26,10 +26,10 @@ export function MarkersMap({ parkings, center, zoom = 13 }: MarkersMapProps) {
                 parkings.map(parking => (
                     <Marker
                         key={parking.id}
-                        position={parking.position}
+                        position={parking.details[0].position}
                         icon={getDefaultMarkerIcon()}
                     >
-                        <Tooltip>{parking.name} | {parking.availableSlots} disponibles</Tooltip>
+                        <Tooltip>{parking.name} | {parking.details[0].availableSpots} disponibles</Tooltip>
                     </Marker>
                 ))
             }
