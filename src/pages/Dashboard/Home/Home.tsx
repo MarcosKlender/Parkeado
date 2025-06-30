@@ -33,7 +33,7 @@ export function Home() {
                 )}
                 {parkings && parkings.length > 0 && (
                     <div className="home-content">
-                        <MarkersMap parkings={parkings} center={parkings[0].details[0].position} />
+                        <MarkersMap parkings={parkings} center={[4.66015, -74.1377067]} zoom={11} />
                         <section>
                             <ContentTitle
                                 icon={carIcon}

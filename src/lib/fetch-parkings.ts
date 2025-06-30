@@ -20,7 +20,7 @@ export type ParkingProps = {
 }
 
 export async function fetchParkings(): Promise<ParkingProps[]> {
-    const response = await fetch("https://spring-cloud-gateway-production-4db6.up.railway.app/ms-elastic-tfm/places")
+    const response = await fetch("https://spring-cloud-gateway-production-4db6.up.railway.app/ms-elastic-tfm/places/out")
     if (!response.ok) throw new Error("Error al recuperar los parqueaderos")
     const data = await response.json()
     return data.parkings
