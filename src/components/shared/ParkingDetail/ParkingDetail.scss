@@ -1,48 +1,41 @@
-$name-color: #000000;
 $address-color: #737373;
-$article-background: #ffffff;
 $pill-background: #11b982;
 $pill-text: #ffffff;
 
-.parking {
+.parking-detail {
     width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    padding: 0.75rem 1.5rem;
-    margin-block: 0.25rem;
-    background-color: $article-background;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+    text-align: center;
 
-    &:hover {
-        border-color: #05976a;
+    & .parking-info {
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-block: 20px;
+
+        & .address {
+            color: $address-color;
+        }
+
+        & span {
+            border: 1px solid black;
+            padding: 0.25rem 1.25rem;
+            border-radius: 20px;
+        }
     }
 
-    & h3 {
-        margin: 0;
-        font-size: 1rem;
-        color: $name-color;
-    }
+    & .spots-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
 
-    & p {
-        margin: 0;
-        color: $address-color;
-    }
-
-    & span {
-        padding: 0.25rem 1.25rem;
-        border-radius: 20px;
-        background-color: $pill-background;
-        color: $pill-text;
-        font-weight: bold;
-    }
-
-    &:active {
-        transform: scale(0.99);
+        & span {
+            padding: 0.25rem 1.25rem;
+            border-radius: 20px;
+            background-color: $pill-background;
+            color: $pill-text;
+        }
     }
 
     @media (max-width: 768px) {

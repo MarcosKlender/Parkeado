@@ -1,23 +1,40 @@
+import { ParkingProps } from "@/lib/fetch-parkings"
+import { Button } from "../Button/Button"
+import { Spot } from "../Spot/Spot"
 import './ParkingDetail.scss'
 
 type ParkingDetailProps = {
-    name: string
-    address: string
-    availableSlots: number
-    floorNumber: number
+    parking: ParkingProps
     onClick?: () => void
 }
 
-export function ParkingDetail({ name, address, availableSlots, floorNumber, onClick }: ParkingDetailProps) {
+export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
     return (
-        <article className='parking' onClick={onClick}>
-            <div>
-                <h3>{name}</h3>
-                <p>{address}</p>
+        <article className='parking-detail'>
+            <Button variant="secondary" onClick={onClick}>Volver</Button>
+
+            <div className='parking-info'>
+                <div>
+                    <h3>{parking.name}</h3>
+                    <p className="address">{parking.details[0].address}</p>
+                </div>
+                <div>
+                    <span>Piso 1</span>
+                </div>
             </div>
 
-            <span>{availableSlots} libres</span>
-            <span>Piso {floorNumber}</span>
+            <div className='spots-info'>
+                <h3>Espacios Disponibles</h3>
+                <span>{parking.details[0].availableSpots} libres</span>
+            </div>
+
+            <div className='spots'>
+                <Spot number={1} isAvailable={true} />
+                <Spot number={2} isAvailable={false} />
+                <Spot number={3} isAvailable={true} />
+                <Spot number={4} isAvailable={false} />
+                <Spot number={5} isAvailable={true} />
+            </div>
         </article>
     )
 }
