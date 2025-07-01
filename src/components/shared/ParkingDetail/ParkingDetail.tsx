@@ -29,9 +29,13 @@ export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
             </div>
 
             <div className='spots'>
-                <Spot number={1} isAvailable={true} />
-                <Spot number={2} isAvailable={false} />
-                <Spot number={3} isAvailable={true} />
+                {
+                    parking.spots
+                        .filter(spot => spot.floorNumber === 1)
+                        .map((spot) => (
+                            <Spot key={spot.id} number={spot.spotNumber} isOccupied={spot.isOccupied} />
+                        ))
+                }
             </div>
         </article>
     )

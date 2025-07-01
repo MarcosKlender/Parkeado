@@ -38,6 +38,12 @@ $pill-text: #ffffff;
         }
     }
 
+    & .spots {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 10px;
+    }
+
     @media (max-width: 768px) {
         display: flex;
         flex-direction: column;

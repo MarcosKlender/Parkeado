@@ -2,13 +2,13 @@ import './Spot.scss'
 
 type SpotProps = {
     number: number
-    isAvailable: boolean
+    isOccupied: boolean
     onClick?: () => void
 }
 
-export function Spot({ number, isAvailable, onClick }: SpotProps) {
+export function Spot({ number, isOccupied, onClick }: SpotProps) {
     return (
-        <span className={`parking-spot ${isAvailable ? 'available' : 'occupied'}`} onClick={onClick}>
+        <span className={`parking-spot ${isOccupied ? 'occupied' : 'available'}`} onClick={onClick}>
             {number}
         </span>
     )

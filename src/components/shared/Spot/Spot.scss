@@ -17,5 +17,6 @@ $bg-occupied: #fee3e1;
     &.occupied {
         color: $text-occupied;
         background-color: $bg-occupied;
+        cursor: not-allowed;
     }
 }
