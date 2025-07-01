@@ -32,8 +32,6 @@ export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
                 <Spot number={1} isAvailable={true} />
                 <Spot number={2} isAvailable={false} />
                 <Spot number={3} isAvailable={true} />
-                <Spot number={4} isAvailable={false} />
-                <Spot number={5} isAvailable={true} />
             </div>
         </article>
     )

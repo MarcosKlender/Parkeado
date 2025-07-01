@@ -5,11 +5,11 @@ $border-color: #8a8a8a;
     margin-inline: auto;
 
     & .home-content {
+        height: 70vh;
         display: flex;
         border: 1px solid $border-color;
         border-radius: 10px;
         margin-bottom: 25px;
-        height: 70vh;
 
         & section {
             width: 40%;
@@ -33,10 +33,15 @@ $border-color: #8a8a8a;
     @media (max-width: 768px) {
         & .home-content {
             flex-direction: column-reverse;
+            height: auto;
             width: 100%;
 
             & section {
                 width: 100%;
+
+                & .parking-list {
+                    height: 40vh;
+                }
             }
         }
     }

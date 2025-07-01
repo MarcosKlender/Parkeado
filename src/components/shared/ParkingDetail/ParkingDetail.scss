@@ -39,8 +39,17 @@ $pill-text: #ffffff;
     }
 
     @media (max-width: 768px) {
+        display: flex;
         flex-direction: column;
-        text-align: center;
-        gap: 10px;
+
+        & .parking-info {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        & .spots-info {
+            flex-direction: column;
+            gap: 10px;
+        }
     }
 }
