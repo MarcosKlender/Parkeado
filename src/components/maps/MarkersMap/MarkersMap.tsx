@@ -14,6 +14,7 @@ type MarkersMapProps = {
 export function MarkersMap({ parkings, center, zoom = 13 }: MarkersMapProps) {
     return (
         <MapContainer
+            key={JSON.stringify(center)}
             center={center}
             zoom={zoom}
             className="markers-map"

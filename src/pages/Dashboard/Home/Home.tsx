@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useParkings } from "@/hooks/useParkings"
+import { ParkingProps } from "@/lib/fetch-parkings"
 
 import { Header } from "@/components/shared/Header/Header"
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
@@ -36,7 +37,11 @@ export function Home() {
                 )}
                 {parkings && parkings.length > 0 && (
                     <div className="home-content">
-                        <MarkersMap parkings={parkings} center={[4.66015, -74.1377067]} zoom={11} />
+                        <MarkersMap
+                            parkings={parkings}
+                            center={selectedParking ? selectedParking.details[0].position : [4.66015, -74.1377067]}
+                            zoom={selectedParking ? 16 : 11}
+                        />
                         <section>
                             {
                                 selectedParking ? (
