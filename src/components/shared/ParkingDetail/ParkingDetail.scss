@@ -17,10 +17,10 @@ $pill-text: #ffffff;
             color: $address-color;
         }
 
-        & span {
-            border: 1px solid black;
-            padding: 0.25rem 1.25rem;
+        & select {
+            padding: 0.50rem 1.25rem;
             border-radius: 20px;
+            font-size: 1rem;
         }
     }
 
@@ -29,6 +29,10 @@ $pill-text: #ffffff;
         justify-content: space-between;
         align-items: center;
         padding-bottom: 20px;
+
+        & h3 {
+            font-weight: normal;
+        }
 
         & span {
             padding: 0.25rem 1.25rem;
@@ -40,8 +44,8 @@ $pill-text: #ffffff;
 
     & .spots {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        row-gap: 10px;
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 15px;
     }
 
     @media (max-width: 768px) {
@@ -56,6 +60,10 @@ $pill-text: #ffffff;
         & .spots-info {
             flex-direction: column;
             gap: 10px;
+        }
+
+        & .spots {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
