@@ -43,7 +43,16 @@ export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
 
             <div className='spots'>
                 {filteredSpots.map((spot) => (
-                    <Spot key={spot.id} number={spot.spotNumber} isOccupied={spot.isOccupied} onClick={() => console.log(`Spot ${spot.id} clicked!`)} />
+                    <Spot
+                        key={spot.id}
+                        number={spot.spotNumber}
+                        isOccupied={spot.isOccupied}
+                        parkingId={parking.id}
+                        spotId={spot.id}
+                        floorNumber={spot.floorNumber}
+                        carPlate={"ABC-1234"}
+                        email={"marcosklender@example.com"}
+                    />
                 ))}
             </div>
         </article>

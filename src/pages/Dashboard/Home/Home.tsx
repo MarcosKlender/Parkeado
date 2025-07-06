@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useParkings } from "@/hooks/useParkings"
-import { ParkingProps } from "@/lib/fetch-parkings"
 
 import { Header } from "@/components/shared/Header/Header"
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
@@ -14,8 +13,12 @@ import carIcon from "@/assets/car.svg"
 import "./Home.scss"
 
 export function Home() {
+    // Hook de Tanstack Query para obtener los parqueaderos
     const { data: parkings, isLoading, error, refetch } = useParkings()
-    const [selectedParking, setSelectedParking] = useState<ParkingProps | null>(null)
+    // Guarda solo el ID del parqueadero seleccionado
+    const [selectedParkingId, setSelectedParkingId] = useState<string | null>(null)
+    // Deriva el objeto del parqueadero seleccionado desde los datos actualizados
+    const selectedParking = parkings?.find(parking => parking.id === selectedParkingId) || null
 
     return (
         <>
@@ -45,7 +48,10 @@ export function Home() {
                         <section>
                             {
                                 selectedParking ? (
-                                    <ParkingDetail parking={selectedParking} onClick={() => setSelectedParking(null)} />
+                                    <ParkingDetail
+                                        parking={selectedParking}
+                                        onClick={() => setSelectedParkingId(null)}
+                                    />
                                 ) : (
                                     <>
                                         <ContentTitle
@@ -61,7 +67,7 @@ export function Home() {
                                                         name={parking.name}
                                                         address={parking.details[0].address}
                                                         availableSlots={parking.details[0].availableSpots}
-                                                        onClick={() => { setSelectedParking(parking) }}
+                                                        onClick={() => { setSelectedParkingId(parking.id) }}
                                                     />
                                                 ))
                                             }
