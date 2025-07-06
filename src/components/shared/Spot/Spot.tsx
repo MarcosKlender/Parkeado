@@ -1,4 +1,5 @@
 import { useCreateReservation } from '@/hooks/useCreateReservation'
+import { toast } from 'sonner';
 import './Spot.scss'
 
 type SpotProps = {
@@ -20,10 +21,12 @@ export function Spot({ number, isOccupied, parkingId, spotId, floorNumber, carPl
         mutate({ parkingId, spotId, floorNumber, carPlate, email },
             {
                 onSuccess: () => {
-                    console.log("Reservation created successfully")
+                    console.log(`Espacio ${spotId} reservado`)
+                    toast.success(`¡Espacio reservado correctamente!`)
                 },
                 onError: (error) => {
-                    console.error('Error reserving spot:', error)
+                    console.error('Ha ocurrido un error:', error)
+                    toast.error(`Ha ocurrido un error, inténtalo de nuevo.`)
                 }
             }
         )
