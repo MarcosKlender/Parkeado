@@ -1,39 +1,39 @@
 $navbar-color: #fafafa;
 
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $navbar-color;
+  padding-inline: 5rem;
+  height: 50px;
+
+  & .brand {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: $navbar-color;
-    padding-inline: 5rem;
-    height: 50px;
+    gap: 10px;
 
-    & .brand {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-
-        & img {
-            width: 25px;
-        }
+    & img {
+      width: 25px;
     }
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+
+    & li {
+      margin-block: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 1rem;
 
     & ul {
-        list-style: none;
-        display: flex;
-        gap: 30px;
-
-        & li {
-            margin-block: auto;
-        }
+      gap: 15px;
     }
-
-    @media (max-width: 768px) {
-        padding-inline: 1rem;
-
-        & ul {
-            gap: 15px;
-        }
-    }
+  }
 }

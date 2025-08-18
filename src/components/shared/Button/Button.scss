@@ -1,4 +1,4 @@
-@use 'sass:color';
+@use "sass:color";
 
 $text-color: #ffffff;
 $button-primary: #2563ea;
@@ -7,48 +7,48 @@ $button-success: #05976a;
 $button-danger: #dc2625;
 
 .custom-button {
-    padding: 0.75rem 1.5rem;
-    margin-block: 0.75rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: $text-color;
-    cursor: pointer;
+  padding: 0.75rem 1.5rem;
+  margin-block: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: $text-color;
+  cursor: pointer;
 
-    &:active {
-        transform: scale(0.99);
+  &:active {
+    transform: scale(0.99);
+  }
+
+  &.primary {
+    background-color: $button-primary;
+
+    &:hover {
+      background-color: color.adjust($button-primary, $lightness: -10%);
     }
+  }
 
-    &.primary {
-        background-color: $button-primary;
+  &.secondary {
+    background-color: $button-secondary;
 
-        &:hover {
-            background-color: color.adjust($button-primary, $lightness: -10%);
-        }
+    &:hover {
+      background-color: color.adjust($button-secondary, $lightness: -10%);
     }
+  }
 
-    &.secondary {
-        background-color: $button-secondary;
+  &.success {
+    background-color: $button-success;
 
-        &:hover {
-            background-color: color.adjust($button-secondary, $lightness: -10%);
-        }
+    &:hover {
+      background-color: color.adjust($button-success, $lightness: -10%);
     }
+  }
 
-    &.success {
-        background-color: $button-success;
+  &.danger {
+    background-color: $button-danger;
 
-        &:hover {
-            background-color: color.adjust($button-success, $lightness: -10%);
-        }
+    &:hover {
+      background-color: color.adjust($button-danger, $lightness: -10%);
     }
-
-    &.danger {
-        background-color: $button-danger;
-
-        &:hover {
-            background-color: color.adjust($button-danger, $lightness: -10%);
-        }
-    }
+  }
 }

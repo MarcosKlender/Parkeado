@@ -4,19 +4,19 @@ $text-occupied: #7f281f;
 $bg-occupied: #fee3e1;
 
 .parking-spot {
-    padding: 0.5rem 1.75rem;
-    margin-inline: 0.5rem;
-    border-radius: 10px;
-    cursor: pointer;
+  padding: 0.5rem 1.75rem;
+  margin-inline: 0.5rem;
+  border-radius: 10px;
+  cursor: pointer;
 
-    &.available {
-        color: $text-available;
-        background-color: $bg-available;
-    }
+  &.available {
+    color: $text-available;
+    background-color: $bg-available;
+  }
 
-    &.occupied {
-        color: $text-occupied;
-        background-color: $bg-occupied;
-        cursor: not-allowed;
-    }
+  &.occupied {
+    color: $text-occupied;
+    background-color: $bg-occupied;
+    cursor: not-allowed;
+  }
 }

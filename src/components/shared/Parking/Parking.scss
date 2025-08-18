@@ -5,48 +5,48 @@ $pill-background: #11b982;
 $pill-text: #ffffff;
 
 .parking {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    padding: 0.75rem 1.5rem;
-    margin-block: 0.25rem;
-    background-color: $article-background;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 0.75rem 1.5rem;
+  margin-block: 0.25rem;
+  background-color: $article-background;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
 
-    &:hover {
-        border-color: #05976a;
-    }
+  &:hover {
+    border-color: #05976a;
+  }
 
-    & h3 {
-        margin: 0;
-        font-size: 1rem;
-        color: $name-color;
-    }
+  & h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: $name-color;
+  }
 
-    & p {
-        margin: 0;
-        color: $address-color;
-    }
+  & p {
+    margin: 0;
+    color: $address-color;
+  }
 
-    & span {
-        padding: 0.25rem 1.25rem;
-        border-radius: 20px;
-        background-color: $pill-background;
-        color: $pill-text;
-    }
+  & span {
+    padding: 0.25rem 1.25rem;
+    border-radius: 20px;
+    background-color: $pill-background;
+    color: $pill-text;
+  }
 
-    &:active {
-        transform: scale(0.99);
-    }
+  &:active {
+    transform: scale(0.99);
+  }
 
-    @media (max-width: 768px) {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
 }

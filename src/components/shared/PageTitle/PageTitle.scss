@@ -2,16 +2,16 @@ $title-color: #1a1a1a;
 $description-color: #8a8a8a;
 
 .page-title {
-    padding-block: 2rem;
+  padding-block: 2rem;
 
-    & .title {
-        color: $title-color;
-        margin-bottom: .5rem;
-        line-height: 1.25;
-    }
+  & .title {
+    color: $title-color;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
 
-    & .description {
-        color: $description-color;
-        text-wrap: pretty;
-    }
+  & .description {
+    color: $description-color;
+    text-wrap: pretty;
+  }
 }
