@@ -1,84 +1,95 @@
-import { useState } from "react"
-import { useParkings } from "@/hooks/useParkings"
+import { useState } from "react";
+import { useParkings } from "@/hooks/useParkings";
 
-import { Header } from "@/components/shared/Header/Header"
-import { PageTitle } from "@/components/shared/PageTitle/PageTitle"
-import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap"
-import { Parking } from "@/components/shared/Parking/Parking"
-import { ParkingDetail } from "@/components/shared/ParkingDetail/ParkingDetail"
-import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle"
-import { QueryState } from "@/components/shared/QueryState/QueryState"
+import { Header } from "@/components/shared/Header/Header";
+import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
+import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
+import { Parking } from "@/components/shared/Parking/Parking";
+import { ParkingDetail } from "@/components/shared/ParkingDetail/ParkingDetail";
+import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
+import { QueryState } from "@/components/shared/QueryState/QueryState";
 
-import carIcon from "@/assets/car.svg"
-import "./Home.scss"
+import carIcon from "@/assets/car.svg";
+import "./Home.scss";
 
+/**
+ * Renders the home page of the application.
+ *
+ * - Displays available parking spots on a map.
+ * - Allows users to select a parking spot to view more details.
+ *
+ * @component
+ * @returns The rendered home page component.
+ */
 export function Home() {
-    // Hook de Tanstack Query para obtener los parqueaderos
-    const { data: parkings, isLoading, error, refetch } = useParkings()
-    // Guarda solo el ID del parqueadero seleccionado
-    const [selectedParkingId, setSelectedParkingId] = useState<string | null>(null)
-    // Deriva el objeto del parqueadero seleccionado desde los datos actualizados
-    const selectedParking = parkings?.find(parking => parking.id === selectedParkingId) || null
+  const { data: parkings, isLoading, error, refetch } = useParkings();
 
-    return (
-        <>
-            <Header />
-            <main className="home-main">
-                <PageTitle
-                    title="El parqueadero ideal a un clic de distancia"
-                    description="Encuentre plazas de aparcamiento disponibles en tiempo real."
+  const [selectedParkingId, setSelectedParkingId] = useState<string | null>(
+    null
+  );
+
+  const selectedParking =
+    parkings?.find((parking) => parking.id === selectedParkingId) || null;
+
+  return (
+    <>
+      <Header />
+      <main className="home-main">
+        <PageTitle
+          title="El parqueadero ideal a un clic de distancia"
+          description="Encuentre plazas de aparcamiento disponibles en tiempo real."
+        />
+        {isLoading && <QueryState status="loading" />}
+        {error && (
+          <QueryState
+            status="error"
+            errorMessage="Ocurrió un error al cargar el mapa"
+            onClick={() => refetch()}
+          />
+        )}
+        {parkings && parkings.length > 0 && (
+          <div className="home-content">
+            <MarkersMap
+              parkings={parkings}
+              center={
+                selectedParking
+                  ? selectedParking.details[0].position
+                  : [4.66015, -74.1377067]
+              }
+              zoom={selectedParking ? 16 : 11}
+            />
+            <section>
+              {selectedParking ? (
+                <ParkingDetail
+                  parking={selectedParking}
+                  onClick={() => setSelectedParkingId(null)}
                 />
-                {isLoading && (
-                    <QueryState status="loading" />
-                )}
-                {error && (
-                    <QueryState
-                        status="error"
-                        errorMessage="Ocurrió un error al cargar el mapa"
-                        onClick={() => refetch()}
-                    />
-                )}
-                {parkings && parkings.length > 0 && (
-                    <div className="home-content">
-                        <MarkersMap
-                            parkings={parkings}
-                            center={selectedParking ? selectedParking.details[0].position : [4.66015, -74.1377067]}
-                            zoom={selectedParking ? 16 : 11}
-                        />
-                        <section>
-                            {
-                                selectedParking ? (
-                                    <ParkingDetail
-                                        parking={selectedParking}
-                                        onClick={() => setSelectedParkingId(null)}
-                                    />
-                                ) : (
-                                    <>
-                                        <ContentTitle
-                                            icon={carIcon}
-                                            title="Seleccione un parqueadero"
-                                            description="Haga clic en un marcador para ver más información sobre las plazas de aparcamiento disponibles."
-                                        />
-                                        <div className="parking-list">
-                                            {
-                                                parkings?.map(parking => (
-                                                    <Parking
-                                                        key={parking.id}
-                                                        name={parking.name}
-                                                        address={parking.details[0].address}
-                                                        availableSlots={parking.details[0].availableSpots}
-                                                        onClick={() => { setSelectedParkingId(parking.id) }}
-                                                    />
-                                                ))
-                                            }
-                                        </div>
-                                    </>
-                                )
-                            }
-                        </section>
-                    </div>
-                )}
-            </main >
-        </>
-    )
+              ) : (
+                <>
+                  <ContentTitle
+                    icon={carIcon}
+                    title="Seleccione un parqueadero"
+                    description="Haga clic en un marcador para ver más información sobre las plazas de aparcamiento disponibles."
+                  />
+                  <div className="parking-list">
+                    {parkings?.map((parking) => (
+                      <Parking
+                        key={parking.id}
+                        name={parking.name}
+                        address={parking.details[0].address}
+                        availableSlots={parking.details[0].availableSpots}
+                        onClick={() => {
+                          setSelectedParkingId(parking.id);
+                        }}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </section>
+          </div>
+        )}
+      </main>
+    </>
+  );
 }

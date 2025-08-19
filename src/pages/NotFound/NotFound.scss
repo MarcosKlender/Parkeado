@@ -1,18 +1,18 @@
 .notfound-main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
 
-    & img {
-        width: 33%;
-    }
+  & img {
+    width: 33%;
+  }
 
-    @media (max-width: 768px) {
-        img {
-            width: 55%;
-        }
+  @media (max-width: 768px) {
+    img {
+      width: 55%;
     }
+  }
 }
