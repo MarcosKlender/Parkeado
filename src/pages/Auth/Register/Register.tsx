@@ -4,7 +4,7 @@ import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
 import { AuthMap } from "@/components/maps/AuthMap/AuthMap";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
 
-import reactLogo from "@/assets/react.svg";
+import parkeadoLogo from "@/assets/parkeado.svg";
 import "./Register.scss";
 
 /**
@@ -23,7 +23,7 @@ export function Register() {
       }
       <section className="register">
         <form>
-          <img src={reactLogo} alt="Logo de React" />
+          <img src={parkeadoLogo} alt="Logo de React" />
           <h1>Registro</h1>
           <p>Vamos a crear tu nueva cuenta</p>
           <div className="divider" />

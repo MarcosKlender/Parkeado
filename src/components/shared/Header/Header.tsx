@@ -1,6 +1,6 @@
 import { LinkButton } from "../LinkButton/LinkButton";
 import { Avatar } from "@/components/shared/Avatar/Avatar";
-import reactLogo from "@/assets/react.svg";
+import parkeadoLogo from "@/assets/parkeado.svg";
 import "./Header.scss";
 
 /**
@@ -13,7 +13,7 @@ export function Header() {
     <header>
       <nav className="navbar">
         <div className="brand">
-          <img src={reactLogo} alt="Logo de React" />
+          <img src={parkeadoLogo} alt="Logo de React" />
           <p>Parkeado</p>
         </div>
         <ul>

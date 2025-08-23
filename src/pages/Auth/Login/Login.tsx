@@ -4,7 +4,7 @@ import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
 import { AuthMap } from "@/components/maps/AuthMap/AuthMap";
 import { useIsDesktop } from "@/hooks/useIsDesktop";
 
-import reactLogo from "@/assets/react.svg";
+import parkeadoLogo from "@/assets/parkeado.svg";
 import "./Login.scss";
 
 /**
@@ -23,7 +23,7 @@ export function Login() {
       }
       <section className="login">
         <form>
-          <img src={reactLogo} alt="Logo de React" />
+          <img src={parkeadoLogo} alt="Logo de React" />
           <h1>Inicio de Sesión</h1>
           <p>Bienvenido a Parkeado</p>
           <div className="divider" />
