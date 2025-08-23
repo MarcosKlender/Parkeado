@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import { AuthLayout } from "@/layouts/AuthLayout/AuthLayout";
 import { Login } from "@/pages/Auth/Login/Login";
 import { Register } from "@/pages/Auth/Register/Register";
 import { Home } from "@/pages/Dashboard/Home/Home";
@@ -20,8 +21,11 @@ export function App() {
       future={{ v7_relativeSplatPath: true, v7_startTransition: true }}
     >
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<AuthLayout />}>
+          <Route index element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+
         <Route path="/home" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/reservation" element={<Reservation />} />
