@@ -1,6 +1,5 @@
 import { useParkings } from "@/hooks/useParkings";
 
-import { Header } from "@/components/shared/Header/Header";
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
 import { Parking } from "@/components/shared/Parking/Parking";
@@ -24,42 +23,39 @@ export function Reservation() {
 
   return (
     <>
-      <Header />
-      <main className="reservation-main">
-        <PageTitle
-          title="Mi Reserva"
-          description="Aquí podrás administrar tu plaza de aparcamiento."
+      <PageTitle
+        title="Mi Reserva"
+        description="Aquí podrás administrar tu plaza de aparcamiento."
+      />
+      {isLoading && <QueryState status="loading" />}
+      {error && (
+        <QueryState
+          status="error"
+          errorMessage="Ocurrió un error al cargar la información de la reserva"
+          onClick={() => refetch()}
         />
-        {isLoading && <QueryState status="loading" />}
-        {error && (
-          <QueryState
-            status="error"
-            errorMessage="Ocurrió un error al cargar la información de la reserva"
-            onClick={() => refetch()}
+      )}
+      {parkings && parkings.length > 0 && (
+        <div className="reservation-content">
+          <MarkersMap
+            parkings={parkings}
+            center={parkings[0].details[0].position}
+            zoom={16}
           />
-        )}
-        {parkings && parkings.length > 0 && (
-          <div className="reservation-content">
-            <MarkersMap
-              parkings={parkings}
-              center={parkings[0].details[0].position}
-              zoom={16}
+          <section>
+            <ContentTitle
+              icon={trafficIcon}
+              title="Maneja con cuidado"
+              description="Recuerda que tu reserva expirará automáticamente dentro de 1 hora."
             />
-            <section>
-              <ContentTitle
-                icon={trafficIcon}
-                title="Maneja con cuidado"
-                description="Recuerda que tu reserva expirará automáticamente dentro de 1 hora."
-              />
-              <Parking
-                name={parkings[0].name}
-                address={parkings[0].details[0].address}
-                availableSlots={parkings[0].details[0].availableSpots}
-              />
-            </section>
-          </div>
-        )}
-      </main>
+            <Parking
+              name={parkings[0].name}
+              address={parkings[0].details[0].address}
+              availableSlots={parkings[0].details[0].availableSpots}
+            />
+          </section>
+        </div>
+      )}
     </>
   );
 }

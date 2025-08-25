@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthLayout } from "@/layouts/AuthLayout/AuthLayout";
+import { DashboardLayout } from "./layouts/DashboardLayout/DashboardLayout";
 import { Login } from "@/pages/Auth/Login/Login";
 import { Register } from "@/pages/Auth/Register/Register";
 import { Home } from "@/pages/Dashboard/Home/Home";
@@ -26,9 +27,12 @@ export function App() {
           <Route path="register" element={<Register />} />
         </Route>
 
-        <Route path="/home" element={<Home />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/reservation" element={<Reservation />} />
+        <Route element={<DashboardLayout />}>
+          <Route path="home" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="reservation" element={<Reservation />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
