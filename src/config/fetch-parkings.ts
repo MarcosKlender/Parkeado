@@ -1,5 +1,20 @@
 import { LatLngExpression } from "leaflet";
 
+type ParkingDetails = {
+  availableSpots: number;
+  address: string;
+  position: LatLngExpression;
+  totalFloors: number;
+};
+
+type ParkingSpot = {
+  id: string;
+  spotNumber: number;
+  isOccupied: boolean;
+  floorId: string;
+  floorNumber: number;
+};
+
 /**
  * Props for a parking location retrieved from the API.
  * @property id - The unique identifier of the parking.
@@ -12,19 +27,8 @@ export type ParkingProps = {
   id: string;
   name: string;
   city: string;
-  details: {
-    availableSpots: number;
-    address: string;
-    position: LatLngExpression;
-    totalFloors: number;
-  }[];
-  spots: {
-    id: string;
-    spotNumber: number;
-    isOccupied: boolean;
-    floorId: string;
-    floorNumber: number;
-  }[];
+  details: ParkingDetails[];
+  spots: ParkingSpot[];
 };
 
 /**
