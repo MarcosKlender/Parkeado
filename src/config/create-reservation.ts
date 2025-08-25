@@ -18,21 +18,38 @@ export type PayloadProps = {
  * Create a reservation via the REST API.
  *
  * - Sends a POST request with JSON body and returns the parsed reservation data.
- * - Throws an error with status details if the request fails.
+ * - Handles all possible error scenarios (network, HTTP, parsing).
+ * - Implements fail-fast principle with immediate error throwing.
  *
  * @param payload - Payload reservation details to create.
  * @returns The created reservation data returned by the API.
+ * @throws {Error} When the request fails with detailed context.
  */
 export async function createReservation(payload: PayloadProps) {
-  const response = await fetch(
-    "https://spring-cloud-gateway-production-4db6.up.railway.app/ms-elastic-tfm/reservations",
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+  try {
+    const response = await fetch(
+      "https://spring-cloud-gateway-production-4db6.up.railway.app/ms-elastic-tfm/reservations",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
     }
-  );
-  // TODO: Fix the error stack
-  if (!response.ok) throw new Error("Error al crear la reserva");
-  return response.json();
+
+    return await response.json();
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("HTTP Error: ")) {
+      throw error;
+    }
+
+    throw new Error(
+      `Network error: ${
+        error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
+  }
 }

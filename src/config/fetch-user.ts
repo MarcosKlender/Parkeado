@@ -16,15 +16,32 @@ type UserProps = {
  * Fetch user data from the API.
  *
  * - Sends a GET request and returns the parsed user data.
- * - Throws an error with status details if the request fails.
+ * - Handles all possible error scenarios (network, HTTP, parsing).
+ * - Implements fail-fast principle with immediate error throwing.
  *
  * @returns A promise that resolves to the user data.
+ * @throws {Error} When the request fails with detailed context.
  */
 export async function fetchUser(): Promise<UserProps> {
-  const response = await fetch(
-    "https://682918966075e87073a5b965.mockapi.io/users/1"
-  );
-  // TODO: Fix the error stack
-  if (!response.ok) throw new Error("No se pudo obtener el usuario");
-  return response.json();
+  try {
+    const response = await fetch(
+      "https://682918966075e87073a5b965.mockapi.io/users/1"
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    if (error instanceof Error && error.message.includes("HTTP Error: ")) {
+      throw error;
+    }
+
+    throw new Error(
+      `Network error: ${
+        error instanceof Error ? error.message : "Unknown error"
+      }`
+    );
+  }
 }
