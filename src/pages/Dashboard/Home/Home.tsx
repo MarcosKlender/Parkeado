@@ -3,7 +3,7 @@ import { useParkings } from "@/hooks/useParkings";
 
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
-import { Parking } from "@/components/shared/Parking/Parking";
+import { ParkingCard } from "@/components/shared/ParkingCard/ParkingCard";
 import { ParkingDetail } from "@/components/shared/ParkingDetail/ParkingDetail";
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
 import { QueryState } from "@/components/shared/QueryState/QueryState";
@@ -70,7 +70,7 @@ export function Home() {
                 />
                 <div className="parking-list">
                   {parkings?.map((parking) => (
-                    <Parking
+                    <ParkingCard
                       key={parking.id}
                       name={parking.name}
                       address={parking.details[0].address}

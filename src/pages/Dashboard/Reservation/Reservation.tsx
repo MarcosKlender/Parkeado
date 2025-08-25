@@ -2,7 +2,7 @@ import { useParkings } from "@/hooks/useParkings";
 
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
-import { Parking } from "@/components/shared/Parking/Parking";
+import { ParkingCard } from "@/components/shared/ParkingCard/ParkingCard";
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
 import { QueryState } from "@/components/shared/QueryState/QueryState";
 
@@ -48,7 +48,7 @@ export function Reservation() {
               title="Maneja con cuidado"
               description="Recuerda que tu reserva expirará automáticamente dentro de 1 hora."
             />
-            <Parking
+            <ParkingCard
               name={parkings[0].name}
               address={parkings[0].details[0].address}
               availableSlots={parkings[0].details[0].availableSpots}
