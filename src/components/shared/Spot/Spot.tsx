@@ -70,9 +70,10 @@ export function Spot({
     <>
       <Modal
         open={isModalOpen}
-        text={`¿Deseas reservar el espacio ${number}?`}
+        textContent={`¿Deseas reservar el espacio ${number}?`}
         onClose={() => setIsModalOpen(false)}
         onConfirm={handleClick}
+        textOnConfirm="Reservar"
       />
       <span
         className={`parking-spot ${isOccupied ? "occupied" : "available"}`}
