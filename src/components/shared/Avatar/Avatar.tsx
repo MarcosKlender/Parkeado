@@ -1,14 +1,20 @@
-import { useUser } from "@/hooks/useUser";
 import "./Avatar.scss";
+
+/**
+ * Props for the Avatar component.
+ * @property name - The name of the user.
+ */
+type AvatarProps = {
+  name: string;
+};
 
 /**
  * Displays the signed-in user's initials inside a circular badge.
  * @component
+ * @param props - Props for the avatar component.
  * @returns The avatar component with user's initials.
  */
-export function Avatar() {
-  const { data: user } = useUser();
-
+export function Avatar({ name }: AvatarProps) {
   /**
    * Build uppercase initials from a given name (Ada Lovelace → AL).
    * @param name - The full name.
@@ -19,10 +25,15 @@ export function Avatar() {
       .split(" ")
       .map((word) => word[0])
       .join("")
-      .toUpperCase();
+      .toUpperCase()
+      .slice(0, 2);
   };
 
-  const initials = user ? getInitials(user.name) : "";
+  const initials = name ? getInitials(name) : "";
 
-  return <span className="avatar">{initials}</span>;
+  return (
+    <span className="avatar" aria-label="User Avatar">
+      {initials}
+    </span>
+  );
 }
