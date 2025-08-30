@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { Button } from "../../src/components/shared/Button/Button";
+import { Button } from "@/components/shared/Button/Button";
 
 describe("Button Component", () => {
   test("should render children text", () => {
@@ -30,7 +30,7 @@ describe("Button Component", () => {
     expect(button).toBeInTheDocument();
   });
 
-  test("should calls onClick handler when clicked", async () => {
+  test("should call onClick handler when clicked", async () => {
     const user = userEvent.setup();
     const handleClick = vi.fn();
     render(<Button onClick={handleClick}>Click me</Button>);
