@@ -3,6 +3,9 @@ import { Button } from "@/components/shared/Button/Button";
 import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
 
 import parkeadoLogo from "@/assets/parkeado.svg";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { AuthServices } from "@/services/auth/fetch-user.services";
 
 /**
  * Renders the login form component. Used within the AuthLayout.
@@ -10,12 +13,50 @@ import parkeadoLogo from "@/assets/parkeado.svg";
  * @returns The rendered login form.
  */
 export function Login() {
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const mutation = useMutation({
+    mutationKey: ["login"],
+    mutationFn: AuthServices.login,
+    onSuccess: (data) => {
+      console.log("Login exitoso", data.data);
+      // guardar token en storage si aplica
+    },
+    onError: (err) => {
+      console.error("Error en login", err);
+    },
+  });
+  
+  const handleChange = (e:any) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Datos enviados:", formData);
+    if (!formData.email || !formData.password) {
+      console.error("Faltan campos requeridos");
+      return;
+    }
+
+    mutation.mutate(formData);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <img src={parkeadoLogo} alt="Logo de Parkeado" />
       <h1>Inicio de Sesión</h1>
       <p>Bienvenido a Parkeado</p>
       <div className="divider" />
+
       <Input
         label="Correo"
         id="email"
@@ -23,7 +64,10 @@ export function Login() {
         placeholder="usuario@ejemplo.com"
         variant="email"
         autoComplete="email"
+        value={formData.email}
+        onChange={handleChange}
       />
+
       <Input
         label="Contraseña"
         id="password"
@@ -31,15 +75,20 @@ export function Login() {
         placeholder="********"
         variant="password"
         autoComplete="current-password"
+        value={formData.password}
+        onChange={handleChange}
       />
+
       <span>
         <LinkButton to="/register" variant="text">
           Olvidé mi contraseña
         </LinkButton>
       </span>
+
       <Button type="submit" variant="success">
         Ingresar
       </Button>
+
       <span>
         ¿No tienes una cuenta?{" "}
         <LinkButton to="/register" variant="text">

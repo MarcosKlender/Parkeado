@@ -1,8 +1,12 @@
 import { Input } from "@/components/shared/Input/Input";
 import { Button } from "@/components/shared/Button/Button";
 import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
-
 import parkeadoLogo from "@/assets/parkeado.svg";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import { AuthServices, RegisterFormType } from "@/services/auth/fetch-user.services";
+
 
 /**
  * Renders the login form component. Used within the AuthLayout.
@@ -10,8 +14,64 @@ import parkeadoLogo from "@/assets/parkeado.svg";
  * @returns The rendered register form.
  */
 export function Register() {
+  
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState<RegisterFormType>({
+    name: "",
+    email: "",
+    plate: "",
+    password: "",
+    confirmPassword: "",
+  });
+  
+ const mutation = useMutation({
+    mutationKey: ["register"],
+    mutationFn: async (data: RegisterFormType) => {
+      // Aquí llamamos a tu servicio
+     return await AuthServices.register(data);
+    },
+    onSuccess: () => {
+      console.log("Registro exitoso");
+    },
+    onError: (error) => {
+      if (error instanceof Error && error.message.includes("HTTP Error: ")) {
+        throw error;
+      }
+
+      throw new Error(
+        `Network error: ${
+          error instanceof Error ? error.message : "Unknown error"
+        }`
+      );
+    },
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log("Form Data Submitted:", formData);
+    if (!formData.name || !formData.email || !formData.plate || !formData.password) {
+      alert("Por favor completa todos los campos.");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Las contraseñas no coinciden.");
+      return;
+    }
+    delete formData.confirmPassword;
+    mutation.mutate(formData);
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <img src={parkeadoLogo} alt="Logo de Parkeado" />
       <h1>Registro</h1>
       <p>Vamos a crear tu nueva cuenta</p>
@@ -22,24 +82,30 @@ export function Register() {
         name="name"
         placeholder="John Doe"
         variant="text"
-        autoComplete="name"
+        value={formData.name}
+        onChange={handleChange}
       />
+
       <Input
         label="Correo"
         id="email"
         name="email"
         placeholder="usuario@ejemplo.com"
         variant="email"
-        autoComplete="email"
+        value={formData.email}
+        onChange={handleChange}
       />
+
       <Input
         label="Placa del Vehículo"
         id="plate"
         name="plate"
         placeholder="ABC-1234"
         variant="text"
-        autoComplete="on"
+        value={formData.plate}
+        onChange={handleChange}
       />
+
       <span>Podrás editar estos datos más adelante</span>
 
       <Input
@@ -48,19 +114,29 @@ export function Register() {
         name="password"
         placeholder="********"
         variant="password"
-        autoComplete="new-password"
+        value={formData.password}
+        onChange={handleChange}
       />
+
       <Input
         label="Confirmar Contraseña"
         id="confirm-password"
-        name="confirm-password"
+        name="confirmPassword"
         placeholder="********"
         variant="password"
-        autoComplete="new-password"
+        value={formData.confirmPassword}
+        onChange={handleChange}
       />
       <Button type="submit" variant="success">
         Registrarse
       </Button>
+      {mutation.isError && (
+        <p style={{ color: "red" }}>Error en el registro, intenta nuevamente.</p>
+      )}
+      {mutation.isSuccess && (
+        <p style={{ color: "green" }}>¡Registro exitoso!</p>
+      )}
+
       <span>
         ¿Ya tienes una cuenta?{" "}
         <LinkButton to="/" variant="text">

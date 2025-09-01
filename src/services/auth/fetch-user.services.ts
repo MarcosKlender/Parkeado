@@ -1,3 +1,6 @@
+import { ENDPOINTS } from "../enpoints";
+import { HttpRequest } from "../httpRequest";
+
 /**
  * Props for a user retrieved from the API.
  * @property id - The unique identifier of the user.
@@ -44,4 +47,38 @@ export async function fetchUser(): Promise<UserProps> {
       }`
     );
   }
+}
+interface loginType {
+  email: string;
+  password: string;
+}
+
+export interface RegisterFormType {
+  name: string;
+  email: string;
+  plate: string;
+  password: string;
+  confirmPassword?: string;
+}
+
+export type RegisterRequestType = Omit<RegisterFormType, "confirmPassword">;
+
+export const AuthServices = {
+  register: async (body:RegisterRequestType) => {
+    const resp = await HttpRequest.post(
+      ENDPOINTS.AUTH_URLS.register_users,
+      {
+        ...body,
+        placaVehiculo: body.plate
+      }
+    )
+    return resp;
+  },
+  login: async (body: loginType) => {
+    const resp = await HttpRequest.post(
+      ENDPOINTS.AUTH_URLS.login_user,
+      body
+    );
+    return resp;
+  },
 }
