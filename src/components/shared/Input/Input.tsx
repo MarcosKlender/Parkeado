@@ -15,7 +15,7 @@ type InputProps = {
   id: string;
   name: string;
   placeholder: string;
-  autoComplete?: string;
+  autoComplete: string;
   variant?: "text" | "email" | "password";
   defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;

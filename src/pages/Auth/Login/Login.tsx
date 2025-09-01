@@ -13,7 +13,6 @@ import { AuthServices } from "@/services/auth/fetch-user.services";
  * @returns The rendered login form.
  */
 export function Login() {
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,14 +23,16 @@ export function Login() {
     mutationFn: AuthServices.login,
     onSuccess: (data) => {
       console.log("Login exitoso", data.data);
-      // guardar token en storage si aplica
+      // Save token in storage if applicable
     },
     onError: (err) => {
       console.error("Error en login", err);
     },
   });
-  
-  const handleChange = (e:any) => {
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,

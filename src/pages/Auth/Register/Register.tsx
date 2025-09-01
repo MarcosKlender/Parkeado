@@ -1,10 +1,11 @@
 import { Input } from "@/components/shared/Input/Input";
 import { Button } from "@/components/shared/Button/Button";
 import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
+
 import parkeadoLogo from "@/assets/parkeado.svg";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import { AuthServices, RegisterFormType } from "@/services/auth/fetch-user.services";
 
 
@@ -15,7 +16,7 @@ import { AuthServices, RegisterFormType } from "@/services/auth/fetch-user.servi
  */
 export function Register() {
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [formData, setFormData] = useState<RegisterFormType>({
     name: "",
@@ -28,7 +29,6 @@ export function Register() {
  const mutation = useMutation({
     mutationKey: ["register"],
     mutationFn: async (data: RegisterFormType) => {
-      // Aquí llamamos a tu servicio
      return await AuthServices.register(data);
     },
     onSuccess: () => {
@@ -81,6 +81,7 @@ export function Register() {
         id="name"
         name="name"
         placeholder="John Doe"
+        autoComplete="name"
         variant="text"
         value={formData.name}
         onChange={handleChange}
@@ -91,6 +92,7 @@ export function Register() {
         id="email"
         name="email"
         placeholder="usuario@ejemplo.com"
+        autoComplete="email"
         variant="email"
         value={formData.email}
         onChange={handleChange}
@@ -101,6 +103,7 @@ export function Register() {
         id="plate"
         name="plate"
         placeholder="ABC-1234"
+        autoComplete="on"
         variant="text"
         value={formData.plate}
         onChange={handleChange}
@@ -113,6 +116,7 @@ export function Register() {
         id="password"
         name="password"
         placeholder="********"
+        autoComplete="new-password"
         variant="password"
         value={formData.password}
         onChange={handleChange}
@@ -123,6 +127,7 @@ export function Register() {
         id="confirm-password"
         name="confirmPassword"
         placeholder="********"
+        autoComplete="new-password"
         variant="password"
         value={formData.confirmPassword}
         onChange={handleChange}
