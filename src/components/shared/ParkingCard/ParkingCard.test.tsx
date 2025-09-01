@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { userEvent } from "@testing-library/user-event";
-import { ParkingCard } from "@/components/shared/ParkingCard/ParkingCard";
+import { ParkingCard } from "./ParkingCard";
 
 describe("ParkingCard Component", () => {
   test("should render an article", () => {

@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { Avatar } from "@/components/shared/Avatar/Avatar";
+import { Avatar } from "./Avatar";
 
 describe("Avatar Component", () => {
   test("should extract initials from name", () => {
