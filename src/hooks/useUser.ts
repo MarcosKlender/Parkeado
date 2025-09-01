@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchUser } from "@/config/fetch-user";
+import { fetchUser } from "@/services/auth/fetch-user.services";
 
 /**
  * Custom hook for fetching user data.

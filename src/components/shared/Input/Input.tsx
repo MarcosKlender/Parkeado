@@ -15,10 +15,12 @@ type InputProps = {
   id: string;
   name: string;
   placeholder: string;
-  autoComplete: string;
+  autoComplete?: string;
   variant?: "text" | "email" | "password";
   defaultValue?: string;
-};
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  value?: string;
+}
 
 /**
  * Reusable input component for text, email, and password fields.
@@ -34,6 +36,7 @@ export function Input({
   autoComplete,
   variant = "text",
   defaultValue,
+  onChange,
 }: InputProps) {
   return (
     <>
@@ -48,6 +51,7 @@ export function Input({
           defaultValue={defaultValue}
           className="custom-input"
           required
+          onChange={onChange}
         />
       </label>
     </>

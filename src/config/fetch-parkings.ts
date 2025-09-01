@@ -44,7 +44,7 @@ export type ParkingProps = {
 export async function fetchParkings(): Promise<ParkingProps[]> {
   try {
     const response = await fetch(
-      "https://spring-cloud-gateway-production-4db6.up.railway.app/ms-elastic-tfm/places"
+      "/ms-elastic-tfm/places"
     );
 
     if (!response.ok) {
