@@ -33,7 +33,15 @@ $text-color: #a1a1a1;
       p {
         color: $text-color;
       }
-
+      .text-status {
+        text-align: center;
+      } 
+      .error-message{
+        color: red;
+      }
+      .success-message {
+        color: green;
+      }
       .divider {
         height: 1px;
         width: 100%;

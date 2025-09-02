@@ -34,16 +34,9 @@ export function Register() {
     onSuccess: () => {
       console.log("Registro exitoso");
     },
-    onError: (error) => {
-      if (error instanceof Error && error.message.includes("HTTP Error: ")) {
-        throw error;
-      }
+    onError: (error: any) => {
+      console.log("Error en registro", error);
 
-      throw new Error(
-        `Network error: ${
-          error instanceof Error ? error.message : "Unknown error"
-        }`
-      );
     },
   });
 
@@ -56,7 +49,6 @@ export function Register() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("Form Data Submitted:", formData);
     if (!formData.name || !formData.email || !formData.plate || !formData.password) {
       alert("Por favor completa todos los campos.");
       return;
@@ -66,7 +58,6 @@ export function Register() {
       alert("Las contraseñas no coinciden.");
       return;
     }
-    delete formData.confirmPassword;
     mutation.mutate(formData);
   };
 
@@ -136,10 +127,12 @@ export function Register() {
         Registrarse
       </Button>
       {mutation.isError && (
-        <p style={{ color: "red" }}>Error en el registro, intenta nuevamente.</p>
+        <p className="error-message text-status">
+          {mutation.error ? mutation.error?.response?.data?.message : "Error en el registro, intenta nuevamente."}
+        </p>
       )}
       {mutation.isSuccess && (
-        <p style={{ color: "green" }}>¡Registro exitoso!</p>
+        <p className="success-message text-status">¡Registro exitoso!</p>
       )}
 
       <span>

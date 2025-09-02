@@ -1,7 +1,6 @@
 import { Input } from "@/components/shared/Input/Input";
 import { Button } from "@/components/shared/Button/Button";
 import { LinkButton } from "@/components/shared/LinkButton/LinkButton";
-
 import parkeadoLogo from "@/assets/parkeado.svg";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
@@ -25,7 +24,7 @@ export function Login() {
       console.log("Login exitoso", data.data);
       // Save token in storage if applicable
     },
-    onError: (err) => {
+    onError: (err:any) => {
       console.error("Error en login", err);
     },
   });
@@ -52,7 +51,10 @@ export function Login() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form 
+      onSubmit={handleSubmit}
+      className="login-form"
+    >
       <img src={parkeadoLogo} alt="Logo de Parkeado" />
       <h1>Inicio de Sesión</h1>
       <p>Bienvenido a Parkeado</p>
@@ -89,7 +91,14 @@ export function Login() {
       <Button type="submit" variant="success">
         Ingresar
       </Button>
-
+      {mutation.isError && (
+        <p className="error-message text-status">
+          {mutation.error ? mutation.error?.response?.data?.message : "Error en el registro, intenta nuevamente."}
+        </p>
+      )}
+      {mutation.isSuccess && (
+        <p className="success-message text-status">¡Inicio de sesión exitoso!</p>
+      )}
       <span>
         ¿No tienes una cuenta?{" "}
         <LinkButton to="/register" variant="text">
