@@ -52,10 +52,15 @@ export function Spot({
     mutate(
       { parkingId, spotId, floorNumber, carPlate, email },
       {
-        onSuccess: () => {
+        onSuccess: (resp) => {
+          let data = resp.data;
+          setIsModalOpen(false);
+          if(data?.code !== 200){
+            toast.error(`${data?.message}`);
+            return;
+          }
           console.log(`Espacio ${spotId} reservado`);
           toast.success(`¡Espacio reservado correctamente!`);
-          setIsModalOpen(false);
         },
         onError: (error) => {
           console.error("Ha ocurrido un error:", error);

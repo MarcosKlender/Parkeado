@@ -9,6 +9,7 @@ export const ENDPOINTS = Object.freeze({
     update_password: `/${MICRO_AUTH}/api/users/password`,
   },
   PARKINGS_URLS:{
-
+    get_all_parkings: `/${MICRO_PARKING}/api/parkings`,
+    post_create_reservation: `/${MICRO_PARKING}/api/parkings/reservations`,
   }
 });

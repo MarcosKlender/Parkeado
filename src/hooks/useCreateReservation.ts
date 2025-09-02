@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createReservation, PayloadProps } from "@/config/create-reservation";
+import { PayloadProps } from "@/config/create-reservation";
+import { ParkingsServices } from "@/services/dashboard/fetch-parkings.services";
 
 /**
  * Custom hook for creating a reservation.
@@ -13,7 +14,8 @@ export function useCreateReservation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (payload: PayloadProps) => createReservation(payload),
+    mutationKey: ["createReservation"],
+    mutationFn: (payload: PayloadProps) => ParkingsServices.createReservation(payload),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["parkings"] });
     },

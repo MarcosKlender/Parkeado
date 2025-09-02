@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { useParkings } from "@/hooks/useParkings";
-
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
 import { ParkingCard } from "@/components/shared/ParkingCard/ParkingCard";
 import { ParkingDetail } from "@/components/shared/ParkingDetail/ParkingDetail";
 import { ContentTitle } from "@/components/shared/ContentTitle/ContentTitle";
 import { QueryState } from "@/components/shared/QueryState/QueryState";
-
 import carIcon from "@/assets/car.svg";
 import "./Home.scss";
+import { ParkingProps } from "@/config/fetch-parkings";
 
 /**
  * Renders the home page of the application.
@@ -28,7 +27,7 @@ export function Home() {
   );
 
   const selectedParking =
-    parkings?.find((parking) => parking.id === selectedParkingId) || null;
+    parkings?.find((parking: ParkingProps) => parking.id === selectedParkingId) || null;
 
   return (
     <>
@@ -44,7 +43,7 @@ export function Home() {
           onClick={() => refetch()}
         />
       )}
-      {parkings && parkings.length > 0 && (
+      {parkings && parkings?.length > 0 && (
         <div className="home-content">
           <MarkersMap
             parkings={parkings}
@@ -69,7 +68,7 @@ export function Home() {
                   description="Haga clic en un marcador para ver más información sobre las plazas de aparcamiento disponibles."
                 />
                 <div className="parking-list">
-                  {parkings?.map((parking) => (
+                  {parkings?.map((parking: ParkingProps) => (
                     <ParkingCard
                       key={parking.id}
                       name={parking.name}

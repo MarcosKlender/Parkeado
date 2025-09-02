@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchParkings } from "@/config/fetch-parkings";
+import { ParkingsServices } from "@/services/dashboard/fetch-parkings.services";
 
 /**
  * Custom hook for fetching parking data.
@@ -8,6 +9,6 @@ import { fetchParkings } from "@/config/fetch-parkings";
 export function useParkings() {
   return useQuery({
     queryKey: ["parkings"],
-    queryFn: fetchParkings,
+    queryFn: ParkingsServices.getAllParkings,
   });
 }
