@@ -7,6 +7,8 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 //import { useNavigate } from "react-router-dom";
 import { AuthServices, RegisterFormType } from "@/services/auth/fetch-user.services";
+import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 
 /**
@@ -15,8 +17,7 @@ import { AuthServices, RegisterFormType } from "@/services/auth/fetch-user.servi
  * @returns The rendered register form.
  */
 export function Register() {
-  
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<RegisterFormType>({
     name: "",
@@ -32,11 +33,14 @@ export function Register() {
      return await AuthServices.register(data);
     },
     onSuccess: () => {
-      console.log("Registro exitoso");
+      toast.success("Registro exitoso");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
     },
     onError: (error: any) => {
-      console.log("Error en registro", error);
-
+      console.error("Error en registro", error);
+      toast.error("Error en registro");
     },
   });
 
@@ -50,12 +54,12 @@ export function Register() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!formData.name || !formData.email || !formData.plate || !formData.password) {
-      alert("Por favor completa todos los campos.");
+      toast.error("Por favor completa todos los campos.");
       return;
     }
 
     if (formData.password !== formData.confirmPassword) {
-      alert("Las contraseñas no coinciden.");
+      toast.error("Las contraseñas no coinciden.");
       return;
     }
     mutation.mutate(formData);

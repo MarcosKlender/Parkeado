@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { Header } from "@/components/shared/Header/Header";
 
 import "./DashboardLayout.scss";
@@ -10,6 +10,12 @@ import "./DashboardLayout.scss";
  * @returns The dashboard layout with header and outlet for dashboard pages.
  */
 export function DashboardLayout() {
+  const navigate = useNavigate();
+  let token = sessionStorage.getItem("token");
+  if (!token) {
+    sessionStorage.clear();
+    navigate("/");
+  }
   return (
     <>
       <Header />

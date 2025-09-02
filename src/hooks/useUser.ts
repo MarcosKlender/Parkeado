@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchUser } from "@/services/auth/fetch-user.services";
+import { AuthServices } from "@/services/auth/fetch-user.services";
 
 /**
  * Custom hook for fetching user data.
@@ -8,6 +8,6 @@ import { fetchUser } from "@/services/auth/fetch-user.services";
 export function useUser() {
   return useQuery({
     queryKey: ["user"],
-    queryFn: fetchUser,
+    queryFn: AuthServices.getUserProfile,
   });
 }

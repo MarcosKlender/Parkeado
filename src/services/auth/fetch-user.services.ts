@@ -81,4 +81,8 @@ export const AuthServices = {
     );
     return resp;
   },
+  getUserProfile: async () => {
+    const resp = await HttpRequest.get(ENDPOINTS.AUTH_URLS.get_user_profile);
+    return resp;
+  }
 }

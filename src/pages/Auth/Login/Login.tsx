@@ -5,6 +5,7 @@ import parkeadoLogo from "@/assets/parkeado.svg";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { AuthServices } from "@/services/auth/fetch-user.services";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Renders the login form component. Used within the AuthLayout.
@@ -12,6 +13,9 @@ import { AuthServices } from "@/services/auth/fetch-user.services";
  * @returns The rendered login form.
  */
 export function Login() {
+  
+  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -22,7 +26,10 @@ export function Login() {
     mutationFn: AuthServices.login,
     onSuccess: (data) => {
       console.log("Login exitoso", data.data);
-      // Save token in storage if applicable
+      sessionStorage.setItem("token", data.data.token);
+      setTimeout(() => {
+        navigate("/home");
+      }, 1000)
     },
     onError: (err:any) => {
       console.error("Error en login", err);

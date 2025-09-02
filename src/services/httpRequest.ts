@@ -10,19 +10,16 @@ const http = axios.create({
 http.interceptors.request.use(
   function (config: any) {
     // Agregar token a las cabeceras
-    let dataToken = sessionStorage.getItem("userData") || "{}";
+    let dataToken = sessionStorage.getItem("token") || "{}";
     if (!dataToken){
       dataToken =''
     }
     console.log("dataToken", dataToken);
-    dataToken = JSON.parse(dataToken);
-    const token = dataToken;
-
-    if (token) {
+    if (dataToken) {
       // Agregar token a las cabeceras de la solicitud
       config.headers = {
         ...config.headers,
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${dataToken}`,
       };
     }
     return config;

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchParkings } from "@/config/fetch-parkings";
 import { ParkingsServices } from "@/services/dashboard/fetch-parkings.services";
 
 /**

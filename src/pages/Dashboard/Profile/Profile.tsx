@@ -45,7 +45,7 @@ export function Profile() {
               placeholder="John Doe"
               variant="text"
               autoComplete="name"
-              defaultValue={user.name}
+              defaultValue={user.data?.name}
             />
             <Input
               label="Correo"
@@ -54,7 +54,7 @@ export function Profile() {
               placeholder="usuario@example.com"
               variant="email"
               autoComplete="email"
-              defaultValue={user.email}
+              defaultValue={user.data?.email}
             />
             <Input
               label="Placa del Vehículo"
@@ -63,7 +63,7 @@ export function Profile() {
               placeholder="ABC-1234"
               variant="text"
               autoComplete="on"
-              defaultValue={user.plate}
+              defaultValue={user.data?.placaVehiculo}
             />
             <Button type="submit" variant="success">
               Actualizar Datos
