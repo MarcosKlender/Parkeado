@@ -1,0 +1,39 @@
+$navbar-color: #fafafa;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $navbar-color;
+  padding-inline: 5rem;
+  height: 50px;
+
+  & .brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    & img {
+      width: 25px;
+    }
+  }
+
+  & ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+
+    & li {
+      margin-block: auto;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding-inline: 1rem;
+
+    & ul {
+      gap: 15px;
+    }
+  }
+}

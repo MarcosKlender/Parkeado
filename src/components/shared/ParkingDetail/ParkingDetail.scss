@@ -1,0 +1,69 @@
+$address-color: #737373;
+$pill-background: #11b982;
+$pill-text: #ffffff;
+
+.parking-detail {
+  width: 80%;
+  text-align: center;
+
+  & .parking-info {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 20px;
+
+    & .address {
+      color: $address-color;
+    }
+
+    & select {
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+  }
+
+  & .spots-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+
+    & h3 {
+      font-weight: normal;
+    }
+
+    & span {
+      padding: 0.25rem 1.25rem;
+      border-radius: 20px;
+      background-color: $pill-background;
+      color: $pill-text;
+    }
+  }
+
+  & .spots {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 15px;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+
+    & .parking-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    & .spots-info {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    & .spots {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
