@@ -20,7 +20,7 @@ export const ParkingsServices = {
   },
   getReservationByUser: async (email: string) => {
     const resp = await HttpRequest.get(
-      `${ENDPOINTS.PARKINGS_URLS.get_reservations_by_user}?email=${email}`
+      `${ENDPOINTS.PARKINGS_URLS.get_reservations_by_user}/${email}`
     )
     if(resp.status === 200){
       return resp.data?.reservations;
@@ -29,7 +29,7 @@ export const ParkingsServices = {
   },
   createReservation: async (body:any) => {
     const resp = await HttpRequest.post(
-      ENDPOINTS.PARKINGS_URLS.post_create_reservation,
+      `${ENDPOINTS.PARKINGS_URLS.post_create_reservation}/${body?.parkingId}/reservations`,
       body
     )
     return resp;

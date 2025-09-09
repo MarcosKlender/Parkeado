@@ -46,7 +46,6 @@ export function Reservation() {
   
   useEffect(() => {
     if(reservation?.length > 0){
-      console.log("Fetched parkings:", reservation);
       mutation.mutate(reservation[0].parkingId);
     }
   }, [reservation])

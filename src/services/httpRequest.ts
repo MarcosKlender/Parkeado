@@ -14,7 +14,6 @@ http.interceptors.request.use(
     if (!dataToken){
       dataToken =''
     }
-    console.log("dataToken", dataToken);
     if (dataToken) {
       // Agregar token a las cabeceras de la solicitud
       config.headers = {
