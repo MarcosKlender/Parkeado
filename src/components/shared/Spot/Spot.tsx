@@ -59,7 +59,6 @@ export function Spot({
             toast.error(`${data?.message}`);
             return;
           }
-          console.log(`Espacio ${spotId} reservado`);
           toast.success(`¡Espacio reservado correctamente!`);
         },
         onError: (error) => {

@@ -22,7 +22,6 @@ export function Header() {
   }
 
   useEffect(() => {
-    console.log(user?.data)
     if(user?.data && user?.data.active === true){
       sessionStorage.setItem("userData", JSON.stringify(user?.data));
     }

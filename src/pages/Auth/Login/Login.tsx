@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { AuthServices } from "@/services/auth/fetch-user.services";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 /**
  * Renders the login form component. Used within the AuthLayout.
@@ -25,7 +26,17 @@ export function Login() {
     mutationKey: ["login"],
     mutationFn: AuthServices.login,
     onSuccess: (data) => {
-      console.log("Login exitoso", data.data);
+      let resp = data.data;
+      if(resp?.codigo !== 200){
+        console.error("Error en login", resp?.message);
+        toast.error("Error en login");
+        return;
+      }
+      if(!resp?.token || resp?.token === ""){
+        console.error("Error en login, token vacío");
+        toast.error("Error en login, token vacío");
+        return;
+      }
       sessionStorage.setItem("token", data.data.token);
       setTimeout(() => {
         navigate("/home");
@@ -48,7 +59,6 @@ export function Login() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("Datos enviados:", formData);
     if (!formData.email || !formData.password) {
       console.error("Faltan campos requeridos");
       return;
