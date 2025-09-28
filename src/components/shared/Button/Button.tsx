@@ -1,6 +1,5 @@
 import { ReactNode } from "react";
 import "./Button.scss";
-import { disabled } from 'happy-dom/lib/PropertySymbol.js';
 
 /**
  * Props for the Button component.

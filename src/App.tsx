@@ -10,7 +10,6 @@ import { NotFound } from "@/pages/NotFound/NotFound";
 import "@/App.css";
 import { scheduleAutoLogout } from "./config/security/scheduleAutoLogout";
 import { useEffect } from "react";
-import { notify } from "./components/helpers/notify";
 
 /**
  * Renders the App component with its routes (React Router v6).

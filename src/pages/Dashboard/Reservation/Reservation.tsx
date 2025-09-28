@@ -1,5 +1,3 @@
-import { useParkings } from "@/hooks/useParkings";
-
 import { PageTitle } from "@/components/shared/PageTitle/PageTitle";
 import { MarkersMap } from "@/components/maps/MarkersMap/MarkersMap";
 import { ParkingCard } from "@/components/shared/ParkingCard/ParkingCard";
