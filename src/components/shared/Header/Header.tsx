@@ -6,6 +6,8 @@ import parkeadoLogo from "@/assets/parkeado.svg";
 import "./Header.scss";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { clearToken } from "@/config/security/token";
+import { notify } from "@/components/helpers/notify";
 
 /**
  * Header component for the application.
@@ -17,7 +19,8 @@ export function Header() {
   const { data: user} = useUser();
 
   const HandleCloseSession = () => {
-    sessionStorage.clear();
+    clearToken();
+    notify.loggedOut();
     navigate("/");
   }
 

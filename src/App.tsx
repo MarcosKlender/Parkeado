@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import { AuthLayout } from "@/layouts/AuthLayout/AuthLayout";
 import { DashboardLayout } from "./layouts/DashboardLayout/DashboardLayout";
 import { Login } from "@/pages/Auth/Login/Login";
@@ -8,8 +7,10 @@ import { Home } from "@/pages/Dashboard/Home/Home";
 import { Profile } from "@/pages/Dashboard/Profile/Profile";
 import { Reservation } from "./pages/Dashboard/Reservation/Reservation";
 import { NotFound } from "@/pages/NotFound/NotFound";
-
 import "@/App.css";
+import { scheduleAutoLogout } from "./config/security/scheduleAutoLogout";
+import { useEffect } from "react";
+import { notify } from "./components/helpers/notify";
 
 /**
  * Renders the App component with its routes (React Router v6).
@@ -17,6 +18,12 @@ import "@/App.css";
  * @returns The rendered application component.
  */
 export function App() {
+
+  useEffect(() => {
+    // Programa logout según exp si ya hay token en sessionStorage
+    scheduleAutoLogout({ warnBeforeMs: 60_000 });    
+  }, []);
+
   return (
     <BrowserRouter
       future={{ v7_relativeSplatPath: true, v7_startTransition: true }}

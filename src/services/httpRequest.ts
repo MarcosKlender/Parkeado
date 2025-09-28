@@ -1,3 +1,4 @@
+import { clearToken, getToken } from "@/config/security/token";
 import axios from "axios";
 
 const HOST_BACKEND = import.meta.env.VITE_HOST_BACKEND;
@@ -10,7 +11,7 @@ const http = axios.create({
 http.interceptors.request.use(
   function (config: any) {
     // Agregar token a las cabeceras
-    let dataToken = sessionStorage.getItem("token") || "{}";
+    let dataToken = getToken() || "{}";
     if (!dataToken){
       dataToken =''
     }
@@ -24,6 +25,22 @@ http.interceptors.request.use(
     return config;
   },
   function (error: any) {
+    return Promise.reject(error);
+  }
+);
+
+http.interceptors.response.use(
+  (r) => r,
+  (error) => {
+    console.log(error)
+    const status = error?.response?.status;
+    if (status === 401 || status === 403) {
+      clearToken();
+      // Importante: evita loops si ya estás en "/"
+      if (window.location.pathname !== "/") {
+        window.location.replace("/");
+      }
+    }
     return Promise.reject(error);
   }
 );

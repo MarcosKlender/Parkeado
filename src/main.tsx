@@ -16,10 +16,9 @@ import "./index.css";
  */
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    <Toaster richColors closeButton position="top-center" />
     <QueryClientProvider client={queryClient}>
       <App />
-      <Toaster richColors />
-
       {process.env.NODE_ENV === "development" && (
         <ReactQueryDevtools initialIsOpen={false} />
       )}

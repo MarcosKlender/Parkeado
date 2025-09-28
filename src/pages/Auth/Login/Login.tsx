@@ -7,6 +7,8 @@ import { useMutation } from "@tanstack/react-query";
 import { AuthServices } from "@/services/auth/fetch-user.services";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import { scheduleAutoLogout } from "@/config/security/scheduleAutoLogout";
+import { setToken } from "@/config/security/token";
 
 /**
  * Renders the login form component. Used within the AuthLayout.
@@ -37,7 +39,8 @@ export function Login() {
         toast.error("Error en login, token vacío");
         return;
       }
-      sessionStorage.setItem("token", data.data.token);
+      setToken(resp.token);
+      scheduleAutoLogout();
       setTimeout(() => {
         navigate("/home");
       }, 1000)

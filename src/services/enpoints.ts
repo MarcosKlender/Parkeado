@@ -7,6 +7,7 @@ export const ENDPOINTS = Object.freeze({
     login_user: `/${MICRO_AUTH}/api/sessions`,
     update_profile: `/${MICRO_AUTH}/api/profiles`,
     get_user_profile: `/${MICRO_AUTH}/api/profiles`,
+    update_user_profile: `/${MICRO_AUTH}/api/profiles`,
   },
   PARKINGS_URLS:{
     get_all_parkings: `/${MICRO_PARKING}/api/parkings`,
