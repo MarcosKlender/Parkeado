@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import "./Button.scss";
+import { disabled } from 'happy-dom/lib/PropertySymbol.js';
 
 /**
  * Props for the Button component.
@@ -13,6 +14,7 @@ type ButtonProps = {
   type?: "button" | "submit";
   variant?: "primary" | "secondary" | "success" | "danger";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 /**
@@ -26,12 +28,14 @@ export function Button({
   type = "button",
   variant = "primary",
   onClick,
+  disabled = false,
 }: ButtonProps) {
   return (
     <button
       type={type}
       onClick={onClick}
       className={`custom-button ${variant}`}
+      disabled={disabled}
     >
       {children}
     </button>

@@ -60,6 +60,13 @@ export interface RegisterFormType {
   password: string;
   confirmPassword?: string;
 }
+export type UpdateUserPayload = {
+  name?: string;
+  placaVehiculo?: string;
+  currentPassword?: string;
+  newPassword?: string;
+  confirmNewPassword?: string;
+};
 
 export type RegisterRequestType = Omit<RegisterFormType, "confirmPassword">;
 
@@ -83,6 +90,13 @@ export const AuthServices = {
   },
   getUserProfile: async () => {
     const resp = await HttpRequest.get(ENDPOINTS.AUTH_URLS.get_user_profile);
+    return resp;
+  },
+  updateUserProfile: async (body: UpdateUserPayload) => {
+    const resp = await HttpRequest.patch(
+      ENDPOINTS.AUTH_URLS.update_user_profile,
+      body
+    );
     return resp;
   }
 }

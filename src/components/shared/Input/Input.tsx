@@ -20,6 +20,7 @@ type InputProps = {
   defaultValue?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   value?: string;
+  disabled?: boolean;
 }
 
 /**
@@ -37,6 +38,8 @@ export function Input({
   variant = "text",
   defaultValue,
   onChange,
+  value,
+  disabled = false,
 }: InputProps) {
   return (
     <>
@@ -50,8 +53,10 @@ export function Input({
           autoComplete={autoComplete}
           defaultValue={defaultValue}
           className="custom-input"
+          value={value}
           required
           onChange={onChange}
+          disabled={disabled}
         />
       </label>
     </>
