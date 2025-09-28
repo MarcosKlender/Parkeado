@@ -1,13 +1,33 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import { userEvent } from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 import { Header } from "./Header";
 
+// Mock del hook
 vi.mock("@/hooks/useUser", () => ({
   useUser: vi.fn(),
 }));
 
 import { useUser } from "@/hooks/useUser";
+
+// Helper para construir un resultado de React Query usando any
+function makeQueryResult(overrides: any = {}): any {
+  const base: any = {
+    data: undefined,
+    error: undefined,
+    isError: false,
+    isLoading: false,
+    isSuccess: true,
+    status: "success",
+    fetchStatus: "idle",
+    refetch: vi.fn(),
+    isFetched: true,
+    isFetching: false,
+    isPending: false,
+  };
+  return { ...base, ...overrides };
+}
+
 const mockedUseUser = vi.mocked(useUser);
 
 function HeaderWrapper() {
@@ -26,18 +46,20 @@ describe("Header Navigation", () => {
   });
 
   test("should render all navigation links with user data", () => {
-    mockedUseUser.mockReturnValue({
-      data: { name: "John Doe" },
-      isLoading: false,
-      isError: false,
-      error: null,
-      isSuccess: true,
-    });
+    mockedUseUser.mockReturnValue(
+      makeQueryResult({
+        data: { name: "John Doe" },
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+      })
+    );
 
     render(<HeaderWrapper />);
 
     const links = screen.getAllByRole("link");
     expect(links).toHaveLength(3);
+
     expect(screen.getByRole("navigation")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Mapa" })).toHaveAttribute(
       "href",
@@ -50,14 +72,17 @@ describe("Header Navigation", () => {
     expect(screen.getByLabelText("User Avatar")).toHaveTextContent("JD");
   });
 
-  test("should render avatar with empty name whe user is not loaded", () => {
-    mockedUseUser.mockReturnValue({
-      data: null,
-      isLoading: true,
-      isError: false,
-      error: null,
-      isSuccess: false,
-    });
+  test("should render avatar empty when user is not loaded", () => {
+    mockedUseUser.mockReturnValue(
+      makeQueryResult({
+        data: undefined,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+        status: "pending",
+        fetchStatus: "fetching",
+      })
+    );
 
     render(<HeaderWrapper />);
 
@@ -67,33 +92,35 @@ describe("Header Navigation", () => {
   });
 
   test("should handle user loading state", () => {
-    mockedUseUser.mockReturnValue({
-      data: null,
-      isLoading: true,
-      isError: false,
-      error: null,
-      isSuccess: false,
-    });
+    mockedUseUser.mockReturnValue(
+      makeQueryResult({
+        data: undefined,
+        isLoading: true,
+        isError: false,
+        isSuccess: false,
+        status: "pending",
+        fetchStatus: "fetching",
+      })
+    );
 
     render(<HeaderWrapper />);
 
     expect(screen.getByLabelText("User Avatar")).toHaveTextContent("");
     expect(screen.getByRole("link", { name: "Mapa" })).toBeInTheDocument();
-    expect(
-      screen.getByRole("link", { name: "Mi Reserva" })
-    ).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Mi Reserva" })).toBeInTheDocument();
   });
 
   test("should integrate Avatar with LinkButton correctly", async () => {
     const user = userEvent.setup();
 
-    mockedUseUser.mockReturnValue({
-      data: { name: "John Doe" },
-      isLoading: false,
-      isError: false,
-      error: null,
-      isSuccess: true,
-    });
+    mockedUseUser.mockReturnValue(
+      makeQueryResult({
+        data: { name: "John Doe" },
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+      })
+    );
 
     render(<HeaderWrapper />);
 
@@ -101,19 +128,21 @@ describe("Header Navigation", () => {
     expect(profileLink).toHaveAttribute("href", "/profile");
     expect(profileLink).toHaveClass("link-button", "text");
     expect(screen.getByLabelText("User Avatar")).toHaveTextContent("JD");
+
     await user.click(profileLink);
   });
 
   test("should handle navigation link interactions", async () => {
     const user = userEvent.setup();
 
-    mockedUseUser.mockReturnValue({
-      data: { name: "John Doe" },
-      isLoading: false,
-      isError: false,
-      error: null,
-      isSuccess: true,
-    });
+    mockedUseUser.mockReturnValue(
+      makeQueryResult({
+        data: { name: "John Doe" },
+        isLoading: false,
+        isError: false,
+        isSuccess: true,
+      })
+    );
 
     render(<HeaderWrapper />);
 
