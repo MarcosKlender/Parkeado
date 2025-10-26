@@ -34,9 +34,10 @@ export const ParkingsServices = {
     )
     return resp;
   },
-  getDetailsParking: async (id: string) => {
+  getDetailsParking: async (data: any) => {
+    let { parkingId, floorNumber } = data;
     const resp = await HttpRequest.get(
-      `${ENDPOINTS.PARKINGS_URLS.get_details_parking}/${id}?floorNumber=1`
+      `${ENDPOINTS.PARKINGS_URLS.get_details_parking}/${parkingId}?floorNumber=${floorNumber}`
     )
     if(resp.status === 200){
       return resp;
