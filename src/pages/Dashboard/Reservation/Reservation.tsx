@@ -44,7 +44,7 @@ export function Reservation() {
   
   useEffect(() => {
     if(reservation?.length > 0){
-      mutation.mutate(reservation[0].parkingId);
+      mutation.mutate(reservation[0]);
     }
   }, [reservation])
 
@@ -115,6 +115,8 @@ export function Reservation() {
               name={detailsParking[0]?.name}
               address={detailsParking[0]?.details[0]?.address}
               availableSlots={detailsParking[0]?.details[0]?.availableSpots}
+              floorNumber={reservation[0]?.floorNumber}
+              slotId={reservation[0]?.spotId}
             />
           </section>
         </div>

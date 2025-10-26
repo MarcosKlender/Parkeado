@@ -12,6 +12,8 @@ type ParkingCardProps = {
   address: string;
   availableSlots: number;
   onClick?: () => void;
+  floorNumber?: number;
+  slotId?: string;
 };
 
 /**
@@ -25,12 +27,24 @@ export function ParkingCard({
   address,
   availableSlots,
   onClick,
+  floorNumber,
+  slotId
 }: ParkingCardProps) {
   return (
     <article className="parking" onClick={onClick}>
       <div>
         <h3>{name}</h3>
         <p>{address}</p>
+        {
+          floorNumber !== undefined && (
+            <p>Piso {floorNumber}</p>
+          )
+        }
+        {
+          floorNumber !== undefined && (
+            <p>Posición {slotId}</p>
+          )
+        }
       </div>
 
       <span>{availableSlots} libres</span>
