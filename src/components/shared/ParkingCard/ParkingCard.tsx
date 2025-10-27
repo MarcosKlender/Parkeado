@@ -28,23 +28,18 @@ export function ParkingCard({
   availableSlots,
   onClick,
   floorNumber,
-  slotId
+  slotId,
 }: ParkingCardProps) {
   return (
     <article className="parking" onClick={onClick}>
       <div>
         <h3>{name}</h3>
         <p>{address}</p>
-        {
-          floorNumber !== undefined && (
-            <p>Piso {floorNumber}</p>
-          )
-        }
-        {
-          floorNumber !== undefined && (
-            <p>Posición {slotId}</p>
-          )
-        }
+        {floorNumber !== undefined && (
+          <p>
+            Piso {floorNumber} - Plaza {slotId?.at(-1)}
+          </p>
+        )}
       </div>
 
       <span>{availableSlots} libres</span>
