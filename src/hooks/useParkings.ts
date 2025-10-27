@@ -9,5 +9,6 @@ export function useParkings() {
   return useQuery({
     queryKey: ["parkings"],
     queryFn: ParkingsServices.getAllParkings,
+    refetchInterval: 5000, // Refetch every 5 seconds
   });
 }
