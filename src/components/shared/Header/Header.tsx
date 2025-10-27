@@ -5,9 +5,10 @@ import { Avatar } from "@/components/shared/Avatar/Avatar";
 import parkeadoLogo from "@/assets/parkeado.svg";
 import "./Header.scss";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { clearToken } from "@/config/security/token";
 import { notify } from "@/components/helpers/notify";
+import Modal from "@/components/shared/Modal/Modal";
 
 /**
  * Header component for the application.
@@ -16,19 +17,21 @@ import { notify } from "@/components/helpers/notify";
  */
 export function Header() {
   const navigate = useNavigate();
-  const { data: user} = useUser();
+  const { data: user } = useUser();
 
   const HandleCloseSession = () => {
     clearToken();
     notify.loggedOut();
     navigate("/");
-  }
+  };
 
   useEffect(() => {
-    if(user?.data && user?.data.active === true){
+    if (user?.data && user?.data.active === true) {
       sessionStorage.setItem("userData", JSON.stringify(user?.data));
     }
-  }, [user])
+  }, [user]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <header>
@@ -48,20 +51,27 @@ export function Header() {
               Mi Reserva
             </LinkButton>
           </li>
-          {
-            user && (
-              <li>
-                <LinkButton to="/profile" variant="text">
-                  <Avatar name={user.data?.name || ""} />
-                </LinkButton>
-              </li>
-            )
-          }
-          <li onClick={HandleCloseSession}>
-              Salir
-          </li>
+          {user && (
+            <li>
+              <LinkButton to="/profile" variant="text">
+                <Avatar name={user.data?.name || ""} />
+              </LinkButton>
+            </li>
+          )}
+          <li onClick={() => setIsModalOpen(true)}>Salir</li>
         </ul>
       </nav>
+      <Modal
+        open={isModalOpen}
+        textContent="¿Estás seguro de cerrar la sesión?"
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={() => {
+          HandleCloseSession();
+          setIsModalOpen(false);
+        }}
+        textOnConfirm="Confirmar"
+        textOnClose="Volver"
+      />
     </header>
   );
 }

@@ -9,9 +9,13 @@ import "./Reservation.scss";
 import { useReservation } from "@/hooks/useReservation";
 import { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { CancelReservationType, ParkingsServices } from "@/services/dashboard/fetch-parkings.services";
+import {
+  CancelReservationType,
+  ParkingsServices,
+} from "@/services/dashboard/fetch-parkings.services";
 import { Button } from "@/components/shared/Button/Button";
 import { toast } from "sonner";
+import Modal from "@/components/shared/Modal/Modal";
 
 /**
  * Renders the reservation page for the reserved parking spot.
@@ -23,8 +27,14 @@ import { toast } from "sonner";
  * @returns The rendered reservation page component.
  */
 export function Reservation() {
-  const sessionEmail = JSON.parse(sessionStorage.getItem("userData") || '{}')?.email || '';
-  const { data: reservation, isLoading, error, refetch } = useReservation(sessionEmail);
+  const sessionEmail =
+    JSON.parse(sessionStorage.getItem("userData") || "{}")?.email || "";
+  const {
+    data: reservation,
+    isLoading,
+    error,
+    refetch,
+  } = useReservation(sessionEmail);
   const [detailsParking, setDetailsParking] = useState<any[]>([]);
   let errorServer: any = error;
 
@@ -33,21 +43,20 @@ export function Reservation() {
     mutationFn: ParkingsServices.getDetailsParking,
     onSuccess: (data) => {
       let response = data.data;
-      if(response?.code === 200){
+      if (response?.code === 200) {
         setDetailsParking(response.data);
       }
     },
-    onError: (err:any) => {
+    onError: (err: any) => {
       console.error("Error al obtener detalles del parking", err);
     },
   });
-  
+
   useEffect(() => {
-    if(reservation?.length > 0){
+    if (reservation?.length > 0) {
       mutation.mutate(reservation[0]);
     }
-  }, [reservation])
-
+  }, [reservation]);
 
   const mutationCancel = useMutation({
     mutationKey: ["cancel-reservation"],
@@ -69,11 +78,12 @@ export function Reservation() {
       id: reservation[0]?.id,
       parkingId: reservation[0]?.parkingId,
       spotId: reservation[0]?.spotId,
-      floorNumber: reservation[0]?.floorNumber
-    }
+      floorNumber: reservation[0]?.floorNumber,
+    };
     mutationCancel.mutate(data);
-  }
+  };
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -81,20 +91,21 @@ export function Reservation() {
         title="Mi Reserva"
         description="Aquí podrás administrar tu plaza de aparcamiento."
       />
+
       {isLoading && <QueryState status="loading" />}
-      {
-        errorServer && (
-          <QueryState
-            status="error"
-            errorMessage={
-              errorServer?.status === 404
-                ? errorServer?.response?.data?.message
-                : "Ocurrió un error al cargar la información de la reserva"
-            }
-            onClick={() => refetch()}
-          />
-        )
-      }
+
+      {errorServer && (
+        <QueryState
+          status="error"
+          errorMessage={
+            errorServer?.status === 404
+              ? errorServer?.response?.data?.message
+              : "Ocurrió un error al cargar la información de la reserva"
+          }
+          onClick={() => refetch()}
+        />
+      )}
+
       {detailsParking && detailsParking.length > 0 && (
         <div className="reservation-content">
           <MarkersMap
@@ -102,15 +113,34 @@ export function Reservation() {
             center={detailsParking[0]?.details[0]?.position}
             zoom={16}
           />
+
           <section>
             <ContentTitle
               icon={trafficIcon}
               title="Maneja con cuidado"
               description="Recuerda que tu reserva expirará automáticamente dentro de 1 hora."
             />
-            <Button type="button" variant="secondary" onClick={() => handleCancelReservation()}>
+
+            <Button
+              type="button"
+              variant="secondary"
+              onClick={() => setIsModalOpen(true)}
+            >
               Cancelar Reserva
             </Button>
+
+            <Modal
+              open={isModalOpen}
+              textContent="¿Estás seguro de que deseas cancelar tu reserva?"
+              onClose={() => setIsModalOpen(false)}
+              onConfirm={() => {
+                handleCancelReservation();
+                setIsModalOpen(false);
+              }}
+              textOnConfirm="Confirmar"
+              textOnClose="Volver"
+            />
+
             <ParkingCard
               name={detailsParking[0]?.name}
               address={detailsParking[0]?.details[0]?.address}
