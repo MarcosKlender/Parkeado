@@ -46,18 +46,25 @@ export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
           <p className="address">{parking.details[0].address}</p>
         </div>
         <div>
-          <select
-            name="floor"
-            id="floor"
-            onChange={handleFloorChange}
-            value={selectedFloor}
-          >
-            {Array.from({ length: parking.details[0].totalFloors }, (_, i) => (
-              <option key={i} value={i + 1}>
-                Piso {i + 1}
-              </option>
-            ))}
-          </select>
+          {parking.details[0].totalFloors === 1 ? (
+            <p>Piso Único</p>
+          ) : (
+            <select
+              name="floor"
+              id="floor"
+              onChange={handleFloorChange}
+              value={selectedFloor}
+            >
+              {Array.from(
+                { length: parking.details[0].totalFloors },
+                (_, i) => (
+                  <option key={i} value={i + 1}>
+                    Piso {i + 1}
+                  </option>
+                )
+              )}
+            </select>
+          )}
         </div>
       </div>
 
@@ -68,20 +75,24 @@ export function ParkingDetail({ parking, onClick }: ParkingDetailProps) {
         </span>
       </div>
 
-      <div className="spots">
-        {filteredSpots.map((spot) => (
-          <Spot
-            key={spot.id}
-            number={spot.spotNumber}
-            isOccupied={spot.isOccupied}
-            parkingId={parking.id}
-            spotId={spot.id}
-            floorNumber={spot.floorNumber}
-            carPlate={"ABC-1234"}
-            email={"marcosklender@example.com"}
-          />
-        ))}
-      </div>
+      {filteredSpots.length === 0 ? (
+        <p className="no-spots-message">No hay espacios en este piso.</p>
+      ) : (
+        <div className="spots">
+          {filteredSpots.map((spot) => (
+            <Spot
+              key={spot.id}
+              number={spot.spotNumber}
+              isOccupied={spot.isOccupied}
+              parkingId={parking.id}
+              spotId={spot.id}
+              floorNumber={spot.floorNumber}
+              carPlate={"ABC-1234"}
+              email={"marcosklender@example.com"}
+            />
+          ))}
+        </div>
+      )}
     </article>
   );
 }

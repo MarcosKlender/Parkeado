@@ -1,6 +1,8 @@
 $address-color: #737373;
 $pill-background: #11b982;
 $pill-text: #ffffff;
+$text-occupied: #7f281f;
+$bg-occupied: #fee3e1;
 
 .parking-detail {
   width: 80%;
@@ -46,6 +48,14 @@ $pill-text: #ffffff;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     row-gap: 15px;
+  }
+
+  & .no-spots-message {
+    background-color: $bg-occupied;
+    padding: 0.5rem;
+    color: $text-occupied;
+    border: 1px solid $text-occupied;
+    border-radius: 10px;
   }
 
   @media (max-width: 768px) {

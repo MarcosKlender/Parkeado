@@ -62,7 +62,9 @@ export function Profile() {
         payload.placaVehiculo = plate.trim();
 
       if (!payload.name && !payload.placaVehiculo) {
-        setErrorMsg("No hay cambios para guardar o se encuentra algún campo vacío.");
+        setErrorMsg(
+          "No hay cambios para guardar o se encuentra algún campo vacío."
+        );
         return;
       }
 
@@ -70,7 +72,9 @@ export function Profile() {
       setSuccessMsg("Datos actualizados correctamente.");
       await refetch();
     } catch (err: any) {
-      setErrorMsg(err?.response?.data?.message || "Ocurrió un error al actualizar");
+      setErrorMsg(
+        err?.response?.data?.message || "Ocurrió un error al actualizar"
+      );
     }
   };
 
@@ -80,7 +84,6 @@ export function Profile() {
     const nueva = newPassword; // no recortar
     const confirm = confirmNewPassword;
     const current = currentPassword;
-
 
     if (nueva.length < 8 || nueva.length > 64) {
       setErrorMsg("La nueva contraseña debe tener entre 8 y 64 caracteres");
@@ -96,26 +99,36 @@ export function Profile() {
     }
     const complexity = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,64}$/;
     if (!complexity.test(nueva)) {
-      setErrorMsg("La contraseña debe incluir mayúsculas, minúsculas, dígitos y un caracter especial");
+      setErrorMsg(
+        "La contraseña debe incluir mayúsculas, minúsculas, dígitos y un caracter especial"
+      );
       return;
     }
 
-
     try {
-      await mutateAsync({ currentPassword: current, newPassword: nueva, confirmNewPassword: confirm });
+      await mutateAsync({
+        currentPassword: current,
+        newPassword: nueva,
+        confirmNewPassword: confirm,
+      });
       setSuccessMsg("Contraseña cambiada correctamente.");
       setCurrentPassword("");
       setNewPassword("");
       setConfirmNewPassword("");
     } catch (err: any) {
-      setErrorMsg(err?.response?.data?.message || "Ocurrió un error al cambiar la contraseña");
+      setErrorMsg(
+        err?.response?.data?.message ||
+          "Ocurrió un error al cambiar la contraseña"
+      );
     }
   };
 
-
   return (
     <>
-      <PageTitle title="Mi Perfil" description="Aquí podrás editar la información de tu cuenta." />
+      <PageTitle
+        title="Mi Perfil"
+        description="Aquí podrás editar la información de tu cuenta."
+      />
       {isLoading && <QueryState status="loading" />}
       {error && (
         <QueryState
@@ -131,6 +144,16 @@ export function Profile() {
           <form onSubmit={handleSubmitProfile} noValidate>
             <h2>Datos del Usuario</h2>
             <Input
+              label="Correo (no editable)"
+              id="email"
+              name="email"
+              placeholder="usuario@example.com"
+              variant="email"
+              autoComplete="email"
+              value={email}
+              disabled
+            />
+            <Input
               label="Nombre y Apellido"
               id="name"
               name="name"
@@ -139,16 +162,6 @@ export function Profile() {
               autoComplete="name"
               value={name}
               onChange={(e) => setName(e.currentTarget.value)}
-            />
-            <Input
-              label="Correo"
-              id="email"
-              name="email"
-              placeholder="usuario@example.com"
-              variant="email"
-              autoComplete="email"
-              value={email}
-              disabled
             />
             <Input
               label="Placa del Vehículo"
