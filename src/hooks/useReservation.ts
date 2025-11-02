@@ -9,5 +9,6 @@ export function useReservation(email: string) {
   return useQuery({
     queryKey: ["reservations-by-user"],
     queryFn: () => ParkingsServices.getReservationByUser(email),
+    retry: false,
   });
 }

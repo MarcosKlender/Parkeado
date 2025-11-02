@@ -106,7 +106,7 @@ export function Reservation() {
         />
       )}
 
-      {detailsParking && detailsParking.length > 0 && (
+      {detailsParking && detailsParking.length > 0 && !errorServer && (
         <div className="reservation-content">
           <MarkersMap
             parkings={detailsParking}
