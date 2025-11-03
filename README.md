@@ -97,4 +97,8 @@ The primary goal is to simplify the urban parking experience, reducing traffic c
 
 ![Profile](public/assets/profile.webp)
 
+### Not Found
+
+![Not Found](public/assets/not_found.webp)
+
 <p align="right"><a href="#readme-top">Back to top ⬆️</a></p>
